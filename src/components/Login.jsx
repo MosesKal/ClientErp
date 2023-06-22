@@ -107,58 +107,62 @@ const Login = () => {
   return (
     <div className="container-fluid container-login vh-100">
       <div className="row h-100 ">
-        <div className="col-lg-5 col-sm-12">
-          <div className="row h-40">
+        <div className="col-lg-5 col-sm-12 illustration">
+          <div className="row h-40 text-center mt-5">
             <h1>logo</h1>
           </div>
-          <div className="row h-50 mt-5">
+          <div className="row h-50 mt-3">
             <img src={imgIllustration} alt="" className="mt-5" />
           </div>
         </div>
         <div className="col-lg-7 col-sm-12 mt-5">
-          <div className="row align-item-center justify-content-center h-100 mt-5" >
+          <div className="row align-item-center justify-content-center h-100 mt-5">
             <div className="col-6 mt-5">
-              <h1 className="mt-5 mb-5">Connexion</h1>
+              <h1 className="mt-5 mb-3">Connexion</h1>
               <form onSubmit={handleSubmit} className="row">
-                <div className="">
-                  <div className="">
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">
-                        Email address
-                      </label>
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                      />
-                      <div id="emailHelp" class="form-text">
-                        We'll never share your email with anyone else.
-                      </div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">
-                        Password
-                      </label>
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="exampleInputPassword1"
-                      />
-                    </div>
-                    <div class="mb-3 form-check">
-                      <input
-                        type="checkbox"
-                        class="form-check-input"
-                        id="exampleCheck1"
-                      />
-                      <label class="form-check-label" for="exampleCheck1">
-                        Check me out
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                      Submit
+                <div className="row ">
+                  <div class="col mt-3">
+                    <label class="form-label" for="email">
+                      email
+                    </label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      value=""
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="row ">
+                  <div class="col mt-3">
+                    <label class="form-label" for="password">
+                      Mot de pass
+                    </label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      value=""
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="row mt-4">
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="button">
+                      S'inscrire sur la plateforme
                     </button>
+                  </div>
+                </div>
+                <div className="row mt-4">
+                  <div className="col">Créer un compte ?</div>
+                  <div className="col">
+                    <p>
+                      <a class="link-opacity-100" href="#">
+                        Créer
+                      </a>
+                    </p>
                   </div>
                 </div>
               </form>
