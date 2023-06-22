@@ -27,8 +27,8 @@ const Register = () => {
         </div>
         <div className="col-lg-7 col-sm-12 mt-2">
           <div className="row align-item-center justify-content-center h-100 mt-2">
-            <div className="col-6 mt-3">
-              <h1 className="mt-5 mb-5">Inscription</h1>
+            <div className="col-6">
+              <h1 className="mt-5 mb-3">Inscription</h1>
               <form onSubmit={handleSubmit} className="row">
                 <div className="row">
                   <div className="col-12">
