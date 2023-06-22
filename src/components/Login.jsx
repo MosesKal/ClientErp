@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import imgIllustration from "../components/assets/img/Illustration.png";
@@ -6,102 +6,37 @@ import imgIllustration from "../components/assets/img/Illustration.png";
 import axios from "../components/api/axios";
 const LOGIN_URL = "/login";
 const Login = () => {
-  // const { setAuth } = useAuth();
-  // const navigate = useNavigate();
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
 
-  // const userRef = useRef();
-  // const errRef = useRef();
-
-  // const [user, setUser] = useState("");
-  // const [pwd, setPwd] = useState("");
-  // const [errMsg, setErrMsg] = useState("");
-
-  // useEffect(() => {
-  //   userRef.current.focus();
-  // }, []);
-
-  // useEffect(() => {
-  //   setErrMsg("");
-  // }, [user, pwd]);
+  const [email, setMail] = useState("");
+  const [pwd, setPwd] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // try {
-    //   const email = user;
-    //   const password = pwd;
-    //   const response = await axios.post(
-    //     LOGIN_URL,
-    //     JSON.stringify({ email, password }),
-    //     {
-    //       headers: { "Content-Type": "application/json" },
-    //     }
-    //   );
+    try {
+      const password = pwd;
+      const response = await axios.post(
+        LOGIN_URL,
+        JSON.stringify({ email, password }),
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-    //   console.log(response.data.data);
-    //   const accessToken = response?.data?.data?.accessToken;
-    //   const roles = response?.data?.data?.roles;
+      console.log(response.data.data);
+      const accessToken = response?.data?.data?.accessToken;
+      const roles = response?.data?.data?.roles;
 
-    //   setAuth({ roles, accessToken });
-    //   setUser("");
-    //   setPwd("");
-
-    //   navigate(`/${roles}`);
-    // } catch (err) {
-    //   if (!err?.response) {
-    //     // setErrMsg(
-    //     //   <>
-    //     //     <FontAwesomeIcon
-    //     //       icon={faExclamationCircle}
-    //     //       className="warning-icon"
-    //     //     />{" "}
-    //     //     No Server Response
-    //     //   </>
-
-    //   } else if (err.response?.status === 400) {
-    //     setErrMsg(
-    //       // <>
-    //       //   <FontAwesomeIcon
-    //       //     icon={faExclamationCircle}
-    //       //     className="warning-icon"
-    //       //   />{" "}
-    //       //   Missing Username or Password
-    //       // </>
-    //     );
-    //   } else if (err.response?.status === 401) {
-    //     setErrMsg(
-    //       <>
-    //         {/* <FontAwesomeIcon
-    //           icon={faExclamationCircle}
-    //           className="warning-icon"
-    //         />{" "}
-    //         Unauthorized */}
-    //       </>
-    //     );
-    //   } else if (err.response?.status === 403) {
-    //     setErrMsg(
-    //       // <>
-    //       //   <FontAwesomeIcon
-    //       //     icon={faExclamationCircle}
-    //       //     className="warning-icon"
-    //       //   />{" "}
-    //       //   {err.response.data.message}
-    //       // </>
-    //     );
-    //   } else {
-    //     setErrMsg(
-    //       // <>
-    //       //   <FontAwesomeIcon
-    //       //     icon={faExclamationCircle}
-    //       //     className="warning-icon"
-    //       //   />{" "}
-    //       //   Login Failed
-    //       // </>
-    //     );
-    //   }
-    //   console.log(err);
-    //   errRef.current.focus();
-    // }
+      setAuth({ roles, accessToken });
+      setMail("");
+      setPwd("");
+      navigate(`/${roles}`);
+    } catch (err) {
+      if (!err?.response) {
+      }
+    }
   };
 
   return (
@@ -123,13 +58,14 @@ const Login = () => {
                 <div className="row ">
                   <div class="col mt-3">
                     <label class="form-label" for="email">
-                      email
+                      Adresse Mail
                     </label>
                     <input
                       type="email"
                       class="form-control"
                       id="email"
-                      value=""
+                      value={email}
+                      onChange={(e) => setMail(e.target.value)}
                       required
                     />
                   </div>
@@ -143,15 +79,16 @@ const Login = () => {
                       type="password"
                       class="form-control"
                       id="password"
-                      value=""
+                      onChange={(e) => setPwd(e.target.value)}
+                      value={pwd}
                       required
                     />
                   </div>
                 </div>
                 <div className="row mt-4">
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">
-                      S'inscrire sur la plateforme
+                    <button class="btn btn-primary" type="submit">
+                      Se connecter
                     </button>
                   </div>
                 </div>
@@ -159,9 +96,9 @@ const Login = () => {
                   <div className="col">Créer un compte ?</div>
                   <div className="col">
                     <p>
-                      <a class="link-opacity-100" href="#">
+                      <Link to="/register" className="link-opacity-100">
                         Créer
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>

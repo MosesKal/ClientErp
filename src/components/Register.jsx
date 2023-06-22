@@ -3,6 +3,7 @@ import imgIllustration from "../components/assets/img/Illustration.png";
 
 import ParticulierForm from "./ParticulierForm";
 import EntrepriseForm from "./EntrepriseForm";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [type, setType] = useState(1);
@@ -64,9 +65,9 @@ const Register = () => {
                   <div className="col">Avez-vous déjà un compte ?</div>
                   <div className="col">
                     <p>
-                      <a class="link-opacity-100" href="#">
+                      <Link to="/login" className="link-opacity-100">
                         Connexion
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>
