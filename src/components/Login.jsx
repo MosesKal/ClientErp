@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import Alerts from "./muiComponents/Alert";
@@ -87,8 +87,8 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="row mt-4">
-                  <div className="col">Créer un compte ?</div>
-                  <div className="col">
+                  <div className="col-8">Créer un compte ?</div>
+                  <div className="col-4 text-align-end">
                     <p>
                       <Link to="/register" className="link-opacity-100">
                         Créer

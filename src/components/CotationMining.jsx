@@ -1,14 +1,13 @@
 import Header from "./header/Header";
 import SideBarMining from "./sideBars/SideBarMining";
-import MainMining from "./mains/MainMining";
-const DashboardMining = () => {
+
+const CotationMining = () => {
   return (
     <div>
       <Header />
       <SideBarMining />
-      <MainMining />
     </div>
   );
 };
 
-export default DashboardMining;
+export default CotationMining;
