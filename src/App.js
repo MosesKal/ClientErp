@@ -11,7 +11,7 @@ function App() {
       {/* <DashboardAdmin /> */}
       {/* <DashboardVendeur /> */}
       {/* <DashboardMining /> */}
-      <Login/>
+      {/* <Login/> */}
       {/* <Register/> */}
       <Companies />
     </div>
