@@ -1,6 +1,4 @@
-
-
-const MainAdmin = () => {
+const MainMining = () => {
   return (
     <main id="main" className="main">
       <div className="pagetitle">
@@ -562,4 +560,4 @@ const MainAdmin = () => {
   );
 };
 
-export default MainAdmin;
+export default MainMining;

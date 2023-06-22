@@ -1,0 +1,4 @@
+.illustration {
+  background: rgb(18, 38, 71);
+  background: linear-gradient(90deg, rgb(18, 38, 71) 0%, rgb(9, 14, 35) 100%);
+}

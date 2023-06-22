@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import imgIllustration from "../components/assets/img/Illustration.png";
-
+import { useState } from "react";
 import ParticulierForm from "./ParticulierForm";
 import EntrepriseForm from "./EntrepriseForm";
 import { Link, useNavigate } from "react-router-dom";
+import PartieIllustration from "./PartieIllustration";
 
 const Register = () => {
   const [type, setType] = useState(1);
@@ -18,18 +17,11 @@ const Register = () => {
   return (
     <div className="container-fluid container-login vh-100">
       <div className="row h-100 ">
-        <div className="col-lg-5 col-sm-12 illustration">
-          <div className="row h-40 text-center mt-5">
-            <h1>logo</h1>
-          </div>
-          <div className="row h-50 mt-3">
-            <img src={imgIllustration} alt="" className="mt-5" />
-          </div>
-        </div>
-        <div className="col-lg-7 col-sm-12 mt-2">
+        <PartieIllustration />
+        <div className="col-lg-6 col-sm-12">
           <div className="row align-item-center justify-content-center h-100">
             <div className="col-6">
-              <h1 className="mt-5 mb-3">Inscription</h1>
+              <h1 className=" mb-3 mt-2">Inscription</h1>
               <form onSubmit={handleSubmit} className="row">
                 <div className="row">
                   <div className="col-12">
@@ -62,8 +54,8 @@ const Register = () => {
                   </div>
                 </div>
                 <div className="row mt-4">
-                  <div className="col">Avez-vous déjà un compte ?</div>
-                  <div className="col">
+                  <div className="col-8">Avez-vous déjà un compte ?</div>
+                  <div className="col-4">
                     <p>
                       <Link to="/login" className="link-opacity-100">
                         Connexion

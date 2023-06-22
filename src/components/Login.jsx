@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
-import imgIllustration from "../components/assets/img/Illustration.png";
+import Alerts from "./muiComponents/Alert";
+import PartieIllustration from "./PartieIllustration";
 
 import axios from "../components/api/axios";
 const LOGIN_URL = "/login";
@@ -11,10 +12,10 @@ const Login = () => {
 
   const [email, setMail] = useState("");
   const [pwd, setPwd] = useState("");
+  const [alert, setAlert] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const password = pwd;
       const response = await axios.post(
@@ -34,25 +35,18 @@ const Login = () => {
       setPwd("");
       navigate(`/${roles}`);
     } catch (err) {
-      if (!err?.response) {
-      }
+      setAlert(err.response.data.message);
     }
   };
 
   return (
     <div className="container-fluid container-login vh-100">
       <div className="row h-100 ">
-        <div className="col-lg-5 col-sm-12 illustration">
-          <div className="row h-40 text-center mt-5">
-            <h1>logo</h1>
-          </div>
-          <div className="row h-50 mt-3">
-            <img src={imgIllustration} alt="" className="mt-5" />
-          </div>
-        </div>
-        <div className="col-lg-7 col-sm-12 mt-5">
+        <PartieIllustration />
+        <div className="col-lg-6 col-sm-12 mt-5">
           <div className="row align-item-center justify-content-center h-100 mt-5">
             <div className="col-6 mt-5">
+              {alert && <Alerts message={alert} />}
               <h1 className="mt-5 mb-3">Connexion</h1>
               <form onSubmit={handleSubmit} className="row">
                 <div className="row ">
@@ -93,8 +87,8 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="row mt-4">
-                  <div className="col">Créer un compte ?</div>
-                  <div className="col">
+                  <div className="col-8">Créer un compte ?</div>
+                  <div className="col-4 text-align-end">
                     <p>
                       <Link to="/register" className="link-opacity-100">
                         Créer
