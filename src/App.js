@@ -3,6 +3,7 @@ import DashboardVendeur from "./components/DashboardVendeur";
 import DashboardMining from "./components/DashboardMining";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Companies from "./components/Companies";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       {/* <DashboardMining /> */}
       <Login/>
       {/* <Register/> */}
+      <Companies />
     </div>
   );
 }
