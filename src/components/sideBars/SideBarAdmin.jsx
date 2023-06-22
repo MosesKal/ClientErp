@@ -16,6 +16,12 @@ const SideBarAdmin = () => {
             <span>Comptes</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="users-profile.html">
+            <i class="bi bi-bag-check-fill"></i>
+            <span>Entreprise</span>
+          </a>
+        </li>
       </ul>
     </aside>
   );

@@ -7,11 +7,11 @@ import Register from "./components/Register";
 function App() {
   return (
     <div className="container-fluid">
-      {/* <DashboardAdmin /> */}
+      <DashboardAdmin />
       {/* <DashboardVendeur /> */}
       {/* <DashboardMining /> */}
       {/* <Login/> */}
-      <Register/>
+      {/* <Register/> */}
     </div>
   );
 }
