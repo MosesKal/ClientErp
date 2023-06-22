@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import imgIllustration from "../components/assets/img/Illustration.png";
-
+import { useState } from "react";
 import ParticulierForm from "./ParticulierForm";
 import EntrepriseForm from "./EntrepriseForm";
 import { Link, useNavigate } from "react-router-dom";
+import PartieIllustration from "./PartieIllustration";
 
 const Register = () => {
   const [type, setType] = useState(1);
@@ -18,14 +17,7 @@ const Register = () => {
   return (
     <div className="container-fluid container-login vh-100">
       <div className="row h-100 ">
-        <div className="col-lg-5 col-sm-12 illustration">
-          <div className="row h-40 text-center mt-5">
-            <h1>logo</h1>
-          </div>
-          <div className="row h-50 mt-3">
-            <img src={imgIllustration} alt="" className="mt-5" />
-          </div>
-        </div>
+    <PartieIllustration/>
         <div className="col-lg-7 col-sm-12 mt-2">
           <div className="row align-item-center justify-content-center h-100">
             <div className="col-6">
