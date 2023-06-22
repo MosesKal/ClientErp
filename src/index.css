@@ -1233,12 +1233,3 @@ h6 {
 /*--------------------------------------------------------------
 # Register
 ----------------------------------------------------------------*/
-
-.illustration {
-  background: var(--background-color-start);
-  background: linear-gradient(
-    90deg,
-    var(--background-color-start) 0%,
-    var(--background-color-end) 100%
-  );
-}

@@ -43,7 +43,7 @@ const Login = () => {
     <div className="container-fluid container-login vh-100">
       <div className="row h-100 ">
         <PartieIllustration />
-        <div className="col-lg-7 col-sm-12 mt-5">
+        <div className="col-lg-6 col-sm-12 mt-5">
           <div className="row align-item-center justify-content-center h-100 mt-5">
             <div className="col-6 mt-5">
               {alert && <Alerts message={alert} />}
