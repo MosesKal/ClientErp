@@ -1,26 +1,26 @@
-import React from "react";
+import { NavLink } from "react-router-dom";
 
 const SideBarAdmin = () => {
   return (
     <aside id="sidebar" className="sidebar">
       <ul className="sidebar-nav" id="sidebar-nav">
         <li className="nav-item">
-          <a className="nav-link" href="index.html">
-            <i class="bi bi-grid-1x2-fill"></i>
+          <NavLink className="nav-link" to="/admin">
+            <i className="bi bi-grid-1x2-fill"></i>
             <span>Dashboard Admin</span>
-          </a>
+          </NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="users-profile.html">
-            <i class="bi bi-person-fill-gear"></i>
+        <li className="nav-item">
+          <NavLink className="nav-link collapsed" to="/admin/comptes">
+            <i className="bi bi-person-fill-gear"></i>
             <span>Comptes</span>
-          </a>
+          </NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="users-profile.html">
-            <i class="bi bi-bag-check-fill"></i>
+        <li className="nav-item">
+          <NavLink className="nav-link collapsed" to="/admin/entreprise">
+            <i className="bi bi-bag-check-fill"></i>
             <span>Entreprise</span>
-          </a>
+          </NavLink>
         </li>
       </ul>
     </aside>

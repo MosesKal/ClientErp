@@ -2,83 +2,66 @@
 const ParticulierForm = ({ onSubmit }) => {
   return (
     <div className="row">
-      <div className="col-12 ">
-        <div className="row ">
-          <div class="col mt-2 ">
-            <label for="nom" class="form-label">
+      <div className="col-12">
+        <div className="row">
+          <div className="col mt-2">
+            <label htmlFor="nom" className="form-label">
               Nom
             </label>
-            <input
-              type="text"
-              class="form-control"
-              id="nom"
-              required
-            />
+            <input type="text" className="form-control" id="nom" required />
           </div>
         </div>
         <div className="row">
-          <div class="col mt-2">
-            <label for="prenom" class="form-label">
+          <div className="col mt-2">
+            <label htmlFor="prenom" className="form-label">
               Prenom
             </label>
-            <input
-              type="text"
-              class="form-control"
-              id="prenom"
-              required
-            />
+            <input type="text" className="form-control" id="prenom" required />
           </div>
         </div>
         <div className="row">
-          <div class="col mt-2">
-            <label for="email" class="form-label">
+          <div className="col mt-2">
+            <label htmlFor="email" className="form-label">
               e-mail
             </label>
-            <div class="input-group">
-              <span class="input-group-text" id="email">
+            <div className="input-group">
+              <span className="input-group-text" id="email-addon">
                 @
               </span>
-              <input type="email" class="form-control" id="email" required />
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                required
+              />
             </div>
           </div>
         </div>
-        <div className="row ">
-          <div class="col mt-2">
-            <label for="phone" class="form-label">
+        <div className="row">
+          <div className="col mt-2">
+            <label htmlFor="phone" className="form-label">
               Téléphone
             </label>
-            <input
-              type="text"
-              class="form-control"
-              id="phone"
-              value=""
-              required
-            />
+            <input type="text" className="form-control" id="phone" required />
           </div>
         </div>
         <div className="row mt-2">
-          <div class="col">
-            <label for="profil" class="form-label">
+          <div className="col">
+            <label htmlFor="profil" className="form-label">
               Photo de profil
             </label>
-            <input
-              type="file"
-              class="form-control"
-              id="profil"
-              required
-            />
+            <input type="file" className="form-control" id="profil" required />
           </div>
         </div>
         <div className="row mt-2">
-          <div class="col ">
-            <label class="form-label" for="password">
-              Mot de pass
+          <div className="col">
+            <label htmlFor="password" className="form-label">
+              Mot de passe
             </label>
             <input
               type="password"
-              class="form-control"
+              className="form-control"
               id="password"
-              value=""
               required
             />
           </div>

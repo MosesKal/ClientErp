@@ -1,5 +1,5 @@
-
-
+import React from "react";
+import imgProfile from "../assets/img/profile-img.jpg";
 const Navigation = () => {
   return (
     <nav className="header-nav ms-auto">
@@ -166,11 +166,7 @@ const Navigation = () => {
             href="#"
             data-bs-toggle="dropdown"
           >
-            <img
-              src="assets/img/profile-img.jpg"
-              alt="Profile"
-              className="rounded-circle"
-            />
+            <img src={imgProfile} alt="Profile" className="rounded-circle" />
             <span className="d-none d-md-block dropdown-toggle ps-2">
               K. Anderson
             </span>

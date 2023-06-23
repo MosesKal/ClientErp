@@ -11,8 +11,8 @@ import {
   Typography,
   Unstable_Grid2 as Grid,
 } from "@mui/material";
-import { CompaniesSearch } from "../companies/companies-search";
-import { CompanyCard } from "../companies/company-card";
+import { CompaniesSearch } from "../../companies/companies-search";
+import { CompanyCard } from "../../companies/company-card";
 
 const companies = [
   {

@@ -6,6 +6,7 @@ import PartieIllustration from "./PartieIllustration";
 
 import axios from "../components/api/axios";
 const LOGIN_URL = "/login";
+
 const Login = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
@@ -26,7 +27,6 @@ const Login = () => {
         }
       );
 
-      console.log(response.data.data);
       const accessToken = response?.data?.data?.accessToken;
       const roles = response?.data?.data?.roles;
 
@@ -50,13 +50,13 @@ const Login = () => {
               <h1 className="mt-5 mb-3">Connexion</h1>
               <form onSubmit={handleSubmit} className="row">
                 <div className="row ">
-                  <div class="col mt-3">
-                    <label class="form-label" for="email">
+                  <div className="col mt-3">
+                    <label className="form-label" htmlFor="email">
                       Adresse Mail
                     </label>
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       id="email"
                       value={email}
                       onChange={(e) => setMail(e.target.value)}
@@ -65,13 +65,13 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="row ">
-                  <div class="col mt-3">
-                    <label class="form-label" for="password">
-                      Mot de pass
+                  <div className="col mt-3">
+                    <label className="form-label" htmlFor="password">
+                      Mot de passe
                     </label>
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       id="password"
                       onChange={(e) => setPwd(e.target.value)}
                       value={pwd}
@@ -80,15 +80,15 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="row mt-4">
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="submit">
+                  <div className="d-grid gap-2">
+                    <button className="btn btn-primary" type="submit">
                       Se connecter
                     </button>
                   </div>
                 </div>
                 <div className="row mt-4">
                   <div className="col-8">Créer un compte ?</div>
-                  <div className="col-4 text-align-end">
+                  <div className="col-4 text-align-">
                     <p>
                       <Link to="/register" className="link-opacity-100">
                         Créer
