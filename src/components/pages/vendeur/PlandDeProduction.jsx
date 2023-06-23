@@ -1,15 +1,15 @@
 import Header from "../../header/Header";
 import SideBarVendeur from "../../sideBars/SideBarVendeur";
-import MainCotation from "../../mains/vendeur/MainCotation";
+import MainPlanDeProduction from "../../mains/vendeur/MainPlanDeProduction";
 
-const CotationVendeur = () => {
+const PlandDeProduction = () => {
   return (
     <div>
       <Header />
       <SideBarVendeur />
-      <MainCotation />
+      <MainPlanDeProduction />
     </div>
   );
 };
 
-export default CotationVendeur;
+export default PlandDeProduction;

@@ -10,6 +10,11 @@ import Comptes from "./components/pages/admin/Comptes";
  *---------------------------------------------------------------------------------------*/
 import DashboardVendeur from "./components/pages/vendeur/DashboardVendeur";
 import CotationVendeur from "./components/pages/vendeur/CotationVendeur";
+import CommandesVendeur from "./components/pages/vendeur/CommandesVendeur";
+import StockVendeur from "./components/pages/vendeur/StockVendeur";
+import PlanDeProduction from "./components/pages/vendeur/PlandDeProduction";
+import ComptabiliteVendeur from "./components/pages/vendeur/ComptabiliteVendeur";
+import PortefueilVendeur from "./components/pages/vendeur/PortefueilVendeur";
 /**---------------------------------------------------------------------------------------
  *                    IMPORTATION PAGE MINING
  *---------------------------------------------------------------------------------------*/
@@ -57,7 +62,18 @@ function App() {
 
         <Route element={<RequireAuth allowedRoles={[ROLES.SELLER]} />}>
           <Route path="/seller" element={<DashboardVendeur />} />
-          <Route path="/seller/cotationVendeur" element={<CotationVendeur />} />
+          <Route path="/cotationVendeur" element={<CotationVendeur />} />
+          <Route path="/commandeVendeur" element={<CommandesVendeur />} />
+          <Route path="/stockVendeur" element={<StockVendeur />} />
+          <Route
+            path="/planDeProductionVendeur"
+            element={<PlanDeProduction />}
+          />
+          <Route
+            path="/comptabiliteVendeur"
+            element={<ComptabiliteVendeur />}
+          />
+          <Route path="/portefeuilVendeur" element={<PortefueilVendeur />} />
         </Route>
       </Route>
     </Routes>

@@ -1,8 +1,6 @@
 import { NavLink } from "react-router-dom";
 
 const SideBarMining = () => {
-  console.log("Sidebar");
-
   return (
     <aside id="sidebar" className="sidebar">
       <ul className="sidebar-nav" id="sidebar-nav">

@@ -1,15 +1,15 @@
 import Header from "../../header/Header";
 import SideBarVendeur from "../../sideBars/SideBarVendeur";
-import MainCotation from "../../mains/vendeur/MainCotation";
+import MainPortefeuil from "../../mains/vendeur/MainPortefeuil";
 
-const CotationVendeur = () => {
+const PortefueilVendeur = () => {
   return (
     <div>
       <Header />
       <SideBarVendeur />
-      <MainCotation />
+      <MainPortefeuil />
     </div>
   );
 };
 
-export default CotationVendeur;
+export default PortefueilVendeur;
