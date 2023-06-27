@@ -7,8 +7,9 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: #f6f9ff;
-  color: #444444;
+  font-family: "Inter", sans-serif;
+  background: #ffffff;
+  color: rgb(17, 25, 39);
 }
 
 a {
@@ -600,7 +601,7 @@ h6 {
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background-color: #111927;
 }
 
 @media (max-width: 1199px) {
@@ -648,13 +649,11 @@ h6 {
   margin: 0;
   list-style: none;
 }
-
 .sidebar-nav li {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-
 .sidebar-nav .nav-item {
   margin-bottom: 5px;
 }
@@ -666,15 +665,14 @@ h6 {
   font-weight: 600;
   margin: 10px 0 5px 15px;
 }
-
 .sidebar-nav .nav-link {
   display: flex;
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: #4154f1;
+  color: #ffffff;
   transition: 0.3;
-  background: #f6f9ff;
+  background: #1c2536;
   padding: 10px 15px;
   border-radius: 4px;
 }
@@ -686,8 +684,8 @@ h6 {
 }
 
 .sidebar-nav .nav-link.collapsed {
-  color: #012970;
-  background: #fff;
+  color: #ffffff;
+  background: #1c2536;
 }
 
 .sidebar-nav .nav-link.collapsed i {
@@ -723,7 +721,7 @@ h6 {
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: #012970;
+  color: #f3f6fa;
   transition: 0.3;
   padding: 10px 0 10px 40px;
   transition: 0.3s;
@@ -739,6 +737,7 @@ h6 {
 .sidebar-nav .nav-content a:hover,
 .sidebar-nav .nav-content a.active {
   color: #4154f1;
+  background: #f6f9ff;
 }
 
 .sidebar-nav .nav-content a.active i {
@@ -1233,3 +1232,64 @@ h6 {
 /*--------------------------------------------------------------
 # Register
 ----------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# pop-up container
+----------------------------------------------------------------*/
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Couleur de fond semi-transparente */
+  z-index: 9999; /* Assurez-vous que l'overlay est au-dessus des autres éléments */
+  overflow: scroll;
+}
+
+.popup-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000; /* Assurez-vous que le popup est au-dessus de l'overlay */
+}
+.popup-container2 {
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000; /* Assurez-vous que le popup est au-dessus de l'overlay */
+}
+
+.bg-option {
+  text-align: left;
+  background-color: white;
+  color: rgb(182, 181, 181);
+  border: 1px solid #b6b6b6;
+}
+
+.input-tab {
+  background-color: inherit;
+  border: 1px solid rgb(234, 234, 234);
+  width: 100%;
+  height: 100%;
+}
+
+.input-tab:focus {
+  border-color: rgb(13, 110, 253); /* Couleur de bordure souhaitée */
+  outline: none; /* Supprime la bordure de mise au point par défaut */
+}
+.add-item {
+  cursor: pointer;
+  color: rgb(13, 110, 253);
+  text-decoration: underline;
+}
+
+.my-custom-class {
+  z-index: 9999;
+}

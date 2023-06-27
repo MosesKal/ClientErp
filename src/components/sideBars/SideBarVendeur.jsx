@@ -78,6 +78,18 @@ const SideBarVendeur = () => {
             <span>Comptabilite</span>
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "nav-link" : "nav-link collapsed"
+            }
+            activeClassName="active"
+            to="/Clients"
+          >
+            <i className="bi bi-wallet-fill"></i>
+            <span>Clients</span>
+          </NavLink>
+        </li>
 
         <li className="nav-item">
           <NavLink

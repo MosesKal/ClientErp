@@ -1,4 +1,8 @@
 import React from "react";
+import ReportsChart from "../../Report-charts";
+import { Link } from "react-router-dom";
+import TrafficChart from "../../TraficChart";
+import BudgetChart from "../../BudgetChart";
 
 const MainSeller = () => {
   return (
@@ -14,46 +18,43 @@ const MainSeller = () => {
           </ol>
         </nav>
       </div>
-      {/* <!-- End Page Title --> */}
-
-      <section className="section dashboard">
+      <section class="section dashboard">
         <div className="row">
-          {/* <!-- Left side columns --> */}
-          <div className="col-lg-8">
+          {/* Left side columns */}
+          <div class="col-lg-8">
             <div className="row">
-              {/* <!-- Sales Card --> */}
+              {/* Sales Card */}
               <div className="col-xxl-4 col-md-6">
                 <div className="card info-card sales-card">
                   <div className="filter">
-                    <a className="icon" href="#" data-bs-toggle="dropdown">
+                    <div className="icon" data-bs-toggle="dropdown">
                       <i className="bi bi-three-dots"></i>
-                    </a>
+                    </div>
                     <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                       <li className="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li>
-                        <a className="dropdown-item" href="#">
-                          Today
-                        </a>
+                        <h6>Filtrer</h6>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
-                          This Month
-                        </a>
+                        <Link to="#" className="dropdown-item " disabled>
+                          Aujourd'hui
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
-                          This Year
-                        </a>
+                        <Link to="#" className="dropdown-item " disabled>
+                          Ce Mois
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="#" className="dropdown-item " disabled>
+                          Cette Année
+                        </Link>
                       </li>
                     </ul>
                   </div>
 
                   <div className="card-body">
                     <h5 className="card-title">
-                      Sales <span>| Today</span>
+                      Ventes <span>| Aujourdui</span>
                     </h5>
 
                     <div className="d-flex align-items-center">
@@ -64,50 +65,49 @@ const MainSeller = () => {
                         <h6>145</h6>
                         <span className="text-success small pt-1 fw-bold">
                           12%
-                        </span>{" "}
+                        </span>
                         <span className="text-muted small pt-2 ps-1">
-                          increase
+                          Croissance
                         </span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              {/* <!-- End Sales Card --> */}
+              {/* End Sales Card */}
+              {/* Revenue Card */}
 
-              {/* <!-- Revenue Card --> */}
               <div className="col-xxl-4 col-md-6">
                 <div className="card info-card revenue-card">
                   <div className="filter">
-                    <a className="icon" href="#" data-bs-toggle="dropdown">
+                    <Link to="#" className="icon" data-bs-toggle="dropdown">
                       <i className="bi bi-three-dots"></i>
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                       <li className="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li>
-                        <a className="dropdown-item" href="#">
-                          Today
-                        </a>
+                        <h6>Filtrer</h6>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
-                          This Month
-                        </a>
+                        <Link to="#" className="dropdown-item" type="button">
+                          Aujourd'hui
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
-                          This Year
-                        </a>
+                        <Link to="#" className="dropdown-item" type="button">
+                          Ce mois
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="#" className="dropdown-item" type="button">
+                          Cette Année
+                        </Link>
                       </li>
                     </ul>
                   </div>
 
                   <div className="card-body">
                     <h5 className="card-title">
-                      Revenue <span>| This Month</span>
+                      Revenue <span>| Ce Mois</span>
                     </h5>
 
                     <div className="d-flex align-items-center">
@@ -118,50 +118,51 @@ const MainSeller = () => {
                         <h6>$3,264</h6>
                         <span className="text-success small pt-1 fw-bold">
                           8%
-                        </span>{" "}
+                        </span>
                         <span className="text-muted small pt-2 ps-1">
-                          increase
+                          Croissance
                         </span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              {/* <!-- End Revenue Card --> */}
 
-              {/* <!-- Customers Card --> */}
+              {/* End Revenue Card
+
+            Customers Card  */}
+
               <div className="col-xxl-4 col-xl-12">
                 <div className="card info-card customers-card">
                   <div className="filter">
-                    <a className="icon" href="#" data-bs-toggle="dropdown">
+                    <Link to="#" className="icon" data-bs-toggle="dropdown">
                       <i className="bi bi-three-dots"></i>
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                       <li className="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li>
-                        <a className="dropdown-item" href="#">
-                          Today
-                        </a>
+                        <h6>Filtrer</h6>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
-                          This Month
-                        </a>
+                        <Link to="#" className="dropdown-item" type="button">
+                          Aujourd'hui
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
-                          This Year
-                        </a>
+                        <Link to="#" className="dropdown-item" type="button">
+                          Ce Mois
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="#" className="dropdown-item" type="button">
+                          Cette Année
+                        </Link>
                       </li>
                     </ul>
                   </div>
 
                   <div className="card-body">
                     <h5 className="card-title">
-                      Customers <span>| This Year</span>
+                      Vendeurs <span>| Cette Année</span>
                     </h5>
 
                     <div className="d-flex align-items-center">
@@ -172,101 +173,62 @@ const MainSeller = () => {
                         <h6>1244</h6>
                         <span className="text-danger small pt-1 fw-bold">
                           12%
-                        </span>{" "}
+                        </span>
                         <span className="text-muted small pt-2 ps-1">
-                          decrease
+                          Decroissance
                         </span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              {/* <!-- End Customers Card --> */}
 
-              {/* <!-- Reports --> */}
-              <div className="col-12">
-                <div className="card">
-                  <div className="filter">
-                    <a className="icon" href="#" data-bs-toggle="dropdown">
-                      <i className="bi bi-three-dots"></i>
-                    </a>
-                    <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                      <li className="dropdown-header text-start">
+              {/* End Customers Card
+
+            Reports */}
+              <ReportsChart />
+
+              {/* End Reports
+            Recent Sales */}
+
+              <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+                  <div class="filter">
+                    <Link to="#" class="icon" data-bs-toggle="dropdown">
+                      <i class="bi bi-three-dots"></i>
+                    </Link>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
                         <h6>Filter</h6>
                       </li>
-
                       <li>
-                        <a className="dropdown-item" href="#">
-                          Today
-                        </a>
+                        <Link to="/Aujourdhui" className="dropdown-item">
+                          Aujourd'hui
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
-                          This Month
-                        </a>
+                        <Link to="/Ce mois" className="dropdown-item">
+                          Ce Mois
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
-                          This Year
-                        </a>
+                        <Link to="/Cette annéé" className="dropdown-item">
+                          Cette Année
+                        </Link>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      Reports <span>/Today</span>
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      Commandes Recentes <span>| Aujourd'hui</span>
                     </h5>
 
-                    {/* <!-- Line Chart --> */}
-                    <div id="reportsChart"></div>
-
-                    {/* <!-- End Line Chart --> */}
-                  </div>
-                </div>
-              </div>
-              {/* <!-- End Reports --> */}
-
-              {/* <!-- Recent Sales --> */}
-              <div className="col-12">
-                <div className="card recent-sales overflow-auto">
-                  <div className="filter">
-                    <a className="icon" href="#" data-bs-toggle="dropdown">
-                      <i className="bi bi-three-dots"></i>
-                    </a>
-                    <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                      <li className="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li>
-                        <a className="dropdown-item" href="#">
-                          Today
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="#">
-                          This Month
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="#">
-                          This Year
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      Recent Sales <span>| Today</span>
-                    </h5>
-
-                    <table className="table table-borderless datatable">
+                    <table class="table table-borderless datatable">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">Customer</th>
+                          <th scope="col">Vendeur</th>
                           <th scope="col">Product</th>
                           <th scope="col">Price</th>
                           <th scope="col">Status</th>
@@ -274,78 +236,68 @@ const MainSeller = () => {
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row">
-                            <a href="#">#2457</a>
-                          </th>
+                          <th scope="row">#2457</th>
                           <td>Brandon Jacob</td>
                           <td>
-                            <a href="#" className="text-primary">
+                            <Link to="/Cette annéé" className="text-primary">
                               At praesentium minu
-                            </a>
+                            </Link>
                           </td>
                           <td>$64</td>
                           <td>
-                            <span className="badge bg-success">Approved</span>
+                            <span class="badge bg-success">Approved</span>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">
-                            <a href="#">#2147</a>
-                          </th>
+                          <th scope="row">#2147</th>
                           <td>Bridie Kessler</td>
                           <td>
-                            <a href="#" className="text-primary">
-                              Blanditiis dolor omnis similique
-                            </a>
+                            <Link to="" className="text-primary">
+                              Boots
+                            </Link>
                           </td>
                           <td>$47</td>
                           <td>
-                            <span className="badge bg-warning">Pending</span>
+                            <span class="badge bg-warning">Pending</span>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">
-                            <a href="#">#2049</a>
-                          </th>
+                          <th scope="row">#2049</th>
                           <td>Ashleigh Langosh</td>
                           <td>
-                            <a href="#" className="text-primary">
-                              At recusandae consectetur
-                            </a>
+                            <Link to="/" className="text-primary">
+                              Chou
+                            </Link>
                           </td>
                           <td>$147</td>
                           <td>
-                            <span className="badge bg-success">Approved</span>
+                            <span class="badge bg-success">Approved</span>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">
-                            <a href="#">#2644</a>
-                          </th>
-                          <td>Angus Grady</td>
+                          <th scope="row">#2644</th>
+                          <td>Kadea</td>
                           <td>
-                            <a href="#" className="text-primar">
-                              Ut voluptatem id earum et
-                            </a>
+                            <Link to="" className="text-primary">
+                              Logiciels de gestion de minage
+                            </Link>
                           </td>
-                          <td>$67</td>
+                          <td>$2000</td>
                           <td>
-                            <span className="badge bg-danger">Rejected</span>
+                            <span class="badge bg-danger">Rejected</span>
                           </td>
                         </tr>
                         <tr>
-                          <th scope="row">
-                            <a href="#">#2644</a>
-                          </th>
-                          <td>Raheem Lehner</td>
+                          <th scope="row">#2644</th>
+                          <td>Aimé nzolo</td>
                           <td>
-                            <a href="#" className="text-primary">
-                              Sunt similique distinctio
-                            </a>
+                            <Link to="/" className="text-primary">
+                              Ordinateurs
+                            </Link>
                           </td>
                           <td>$165</td>
                           <td>
-                            <span className="badge bg-success">Approved</span>
+                            <span class="badge bg-success">Approved</span>
                           </td>
                         </tr>
                       </tbody>
@@ -353,127 +305,127 @@ const MainSeller = () => {
                   </div>
                 </div>
               </div>
-              {/* <!-- End Recent Sales --> */}
 
-              {/* <!-- Top Selling --> */}
-              <div className="col-12">
-                <div className="card top-selling overflow-auto">
-                  <div className="filter">
-                    <a className="icon" href="#" data-bs-toggle="dropdown">
-                      <i className="bi bi-three-dots"></i>
-                    </a>
-                    <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                      <li className="dropdown-header text-start">
+              {/* End Recent Sales
+           Top Selling  */}
+
+              <div class="col-12">
+                <div class="card top-selling overflow-auto">
+                  <div class="filter">
+                    <Link class="icon" to="#" data-bs-toggle="dropdown">
+                      <i class="bi bi-three-dots"></i>
+                    </Link>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
                         <h6>Filter</h6>
                       </li>
-
                       <li>
-                        <a className="dropdown-item" href="#">
-                          Today
-                        </a>
+                        <Link class="dropdown-item" to="#">
+                          Aujourd'hui
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
-                          This Month
-                        </a>
+                        <Link class="dropdown-item" to="#">
+                          Ce Mois
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
-                          This Year
-                        </a>
+                        <Link class="dropdown-item" to="#">
+                          Cette Année
+                        </Link>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="card-body pb-0">
-                    <h5 className="card-title">
-                      Top Selling <span>| Today</span>
+                  <div class="card-body pb-0">
+                    <h5 class="card-title">
+                      Les produits les plus Commandés <span>| Aujourd'hui</span>
                     </h5>
 
-                    <table className="table table-borderless">
+                    <table class="table table-borderless">
                       <thead>
                         <tr>
-                          <th scope="col">Preview</th>
-                          <th scope="col">Product</th>
-                          <th scope="col">Price</th>
-                          <th scope="col">Sold</th>
+                          <th scope="col">Image</th>
+                          <th scope="col">Produit</th>
+                          <th scope="col">Prix</th>
+                          <th scope="col">Vendu</th>
                           <th scope="col">Revenue</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <th scope="row">
-                            <a href="#">
+                            <Link to="#">
                               <img src="assets/img/product-1.jpg" alt="" />
-                            </a>
+                            </Link>
                           </th>
                           <td>
-                            <a href="#" className="text-primary fw-bold">
-                              Ut inventore ipsa voluptas nulla
-                            </a>
+                            <Link to="#" class="text-primary fw-bold">
+                              shoes
+                            </Link>
                           </td>
                           <td>$64</td>
-                          <td className="fw-bold">124</td>
+                          <td class="fw-bold">124</td>
                           <td>$5,828</td>
                         </tr>
                         <tr>
                           <th scope="row">
-                            <a href="#">
+                            <Link to="#">
                               <img src="assets/img/product-2.jpg" alt="" />
-                            </a>
+                            </Link>
                           </th>
                           <td>
-                            <a href="#" className="text-primary fw-bold">
+                            <Link to="#" class="text-primary fw-bold">
                               Exercitationem similique doloremque
-                            </a>
+                            </Link>
                           </td>
                           <td>$46</td>
-                          <td className="fw-bold">98</td>
+                          <td class="fw-bold">98</td>
                           <td>$4,508</td>
                         </tr>
                         <tr>
                           <th scope="row">
-                            <a href="#">
+                            <Link to="#">
                               <img src="assets/img/product-3.jpg" alt="" />
-                            </a>
+                            </Link>
                           </th>
                           <td>
-                            <a href="#" className="text-primary fw-bold">
-                              Doloribus nisi exercitationem
-                            </a>
+                            <Link to="#" class="text-primary fw-bold">
+                              Alcool
+                            </Link>
                           </td>
                           <td>$59</td>
-                          <td className="fw-bold">74</td>
+                          <td class="fw-bold">74</td>
                           <td>$4,366</td>
                         </tr>
                         <tr>
                           <th scope="row">
-                            <a href="#">
+                            <Link to="#">
                               <img src="assets/img/product-4.jpg" alt="" />
-                            </a>
+                            </Link>
                           </th>
                           <td>
-                            <a href="#" className="text-primary fw-bold">
-                              Officiis quaerat sint rerum error
-                            </a>
+                            <Link to="#" class="text-primary fw-bold">
+                              Lunettes
+                            </Link>
                           </td>
                           <td>$32</td>
-                          <td className="fw-bold">63</td>
+                          <td class="fw-bold">63</td>
                           <td>$2,016</td>
                         </tr>
                         <tr>
                           <th scope="row">
-                            <a href="#">
+                            <Link to="#">
                               <img src="assets/img/product-5.jpg" alt="" />
-                            </a>
+                            </Link>
                           </th>
                           <td>
-                            <a href="#" className="text-primary fw-bold">
-                              Sit unde debitis delectus repellendus
-                            </a>
+                            <Link to="#" class="text-primary fw-bold">
+                              Ecouteurs
+                            </Link>
                           </td>
                           <td>$79</td>
-                          <td className="fw-bold">41</td>
+                          <td class="fw-bold">41</td>
                           <td>$3,239</td>
                         </tr>
                       </tbody>
@@ -481,260 +433,249 @@ const MainSeller = () => {
                   </div>
                 </div>
               </div>
-              {/* <!-- End Top Selling --> */}
+
+              {/* End Top Selling */}
             </div>
           </div>
-          {/* <!-- End Left side columns --> */}
+          {/* End Left side columns 
+        Right side columns */}
 
-          {/* <!-- Right side columns --> */}
-          <div className="col-lg-4">
-            {/* <!-- Recent Activity --> */}
+          <div class="col-lg-4">
+            {/* Recent Activity */}
             <div className="card">
-              <div className="filter">
-                <a className="icon" href="#" data-bs-toggle="dropdown">
-                  <i className="bi bi-three-dots"></i>
-                </a>
-                <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li className="dropdown-header text-start">
+              <div class="filter">
+                <Link class="icon" to="#" data-bs-toggle="dropdown">
+                  <i class="bi bi-three-dots"></i>
+                </Link>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
                     <h6>Filter</h6>
                   </li>
-
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link class="dropdown-item" to="#">
                       Today
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link class="dropdown-item" to="#">
                       This Month
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link class="dropdown-item" to="#">
                       This Year
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
-
-              <div className="card-body">
-                <h5 className="card-title">
-                  Recent Activity <span>| Today</span>
+              <div class="card-body">
+                <h5 class="card-title">
+                  Activités Recentes <span>| Aujourd'hui</span>
                 </h5>
-
                 <div className="activity">
-                  <div className="activity-item d-flex">
-                    <div className="activite-label">32 min</div>
-                    <i className="bi bi-circle-fill activity-badge text-success align-self-start"></i>
-                    <div className="activity-content">
-                      Quia quae rerum{" "}
-                      <a href="#" className="fw-bold text-dark">
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">32 min</div>
+                    <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
+                    <div class="activity-content">
+                      Quia quae rerum
+                      <Link to="#" class="fw-bold text-dark">
                         explicabo officiis
-                      </a>{" "}
+                      </Link>
                       beatae
                     </div>
                   </div>
-                  {/* <!-- End activity item--> */}
-
-                  <div className="activity-item d-flex">
-                    <div className="activite-label">56 min</div>
-                    <i className="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
-                    <div className="activity-content">
+                  {/* End activity item */}
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">56 min</div>
+                    <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
+                    <div class="activity-content">
                       Voluptatem blanditiis blanditiis eveniet
                     </div>
                   </div>
-                  {/* <!-- End activity item--> */}
+                  {/* End activity item */}
 
-                  <div className="activity-item d-flex">
-                    <div className="activite-label">2 hrs</div>
-                    <i className="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
-                    <div className="activity-content">
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">2 hrs</div>
+                    <i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
+                    <div class="activity-content">
                       Voluptates corrupti molestias voluptatem
                     </div>
                   </div>
-                  {/* <!-- End activity item--> */}
-
-                  <div className="activity-item d-flex">
-                    <div className="activite-label">1 day</div>
-                    <i className="bi bi-circle-fill activity-badge text-info align-self-start"></i>
-                    <div className="activity-content">
-                      Tempore autem saepe{" "}
-                      <a href="#" className="fw-bold text-dark">
+                  {/* End activity item */}
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">1 day</div>
+                    <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
+                    <div class="activity-content">
+                      Tempore autem saepe
+                      <Link to="#" class="fw-bold text-dark">
                         occaecati voluptatem
-                      </a>{" "}
+                      </Link>
                       tempore
                     </div>
                   </div>
-                  {/* <!-- End activity item--> */}
+                  {/* End activity item */}
 
-                  <div className="activity-item d-flex">
-                    <div className="activite-label">2 days</div>
-                    <i className="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
-                    <div className="activity-content">
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">2 days</div>
+                    <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
+                    <div class="activity-content">
                       Est sit eum reiciendis exercitationem
                     </div>
                   </div>
-                  {/* <!-- End activity item-->
+                  {/* End activity item */}
 
-                <div className="activity-item d-flex">
-                  <div className="activite-label">4 weeks</div>
-                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                  <div className="activity-content">
-                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">4 weeks</div>
+                    <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
+                    <div class="activity-content">
+                      Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
+                    </div>
                   </div>
+                  {/* End activity item */}
                 </div>
-                {/* <!-- End activity item--> */}
-                </div>
               </div>
             </div>
-            {/* <!-- End Recent Activity --> */}
 
-            {/* <!-- Budget Report --> */}
+            {/* 
+            End Website Traffic
+            News & Updates Traffic */}
+
             <div className="card">
               <div className="filter">
-                <a className="icon" href="#" data-bs-toggle="dropdown">
+                <Link className="icon" to="#" data-bs-toggle="dropdown">
                   <i className="bi bi-three-dots"></i>
-                </a>
+                </Link>
                 <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                   <li className="dropdown-header text-start">
                     <h6>Filter</h6>
                   </li>
-
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="#">
                       Today
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="#">
                       This Month
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="#">
                       This Year
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
-
-              <div className="card-body pb-0">
-                <h5 className="card-title">
-                  Budget Report <span>| This Month</span>
+              <div class="card-body pb-0">
+                <h5 class="card-title">
+                  Rapport Budgetaire <span>| Ce Mois</span>
                 </h5>
-
-                <div
-                  id="budgetChart"
-                  style={{ minHeight: "400px" }}
-                  className="echart"
-                ></div>
+                <BudgetChart />
               </div>
             </div>
-            {/*<!-- End Budget Report --> */}
+            {/* End Recent Activity 
+          Budget Report */}
 
-            {/* <!-- Website Traffic --> */}
-            <div className="card">
-              <div className="filter">
-                <a className="icon" href="#" data-bs-toggle="dropdown">
-                  <i className="bi bi-three-dots"></i>
-                </a>
-                <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li className="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Today
-                    </a>
+            <div class="card">
+              <div class="filter">
+                <Link to="#" class="icon" data-bs-toggle="dropdown">
+                  <i class="bi bi-three-dots"></i>
+                </Link>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filtrer</h6>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      This Month
-                    </a>
+                    <Link to="#" class="dropdown-item">
+                      Aujourd'hui
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      This Year
-                    </a>
+                    <Link to="#" class="dropdown-item">
+                      Ce Mois
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="#" class="dropdown-item">
+                      Cette Année
+                    </Link>
                   </li>
                 </ul>
               </div>
-
-              <div className="card-body pb-0">
-                <h5 className="card-title">
-                  Website Traffic <span>| Today</span>
+              <div class="card-body pb-0">
+                <h5 class="card-title">
+                  Traffic sur le Site <span>| Aujourd'hui</span>
                 </h5>
 
-                <div
-                  id="trafficChart"
-                  style={{ minHeight: "400px" }}
-                  className="echart"
-                ></div>
+                <TrafficChart />
               </div>
             </div>
+
             <div className="card">
               <div className="filter">
-                <a className="icon" href="#" data-bs-toggle="dropdown">
+                <Link className="icon" to="#" data-bs-toggle="dropdown">
                   <i className="bi bi-three-dots"></i>
-                </a>
+                </Link>
                 <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                   <li className="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Today
-                    </a>
+                    <h6>Filtre</h6>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      This Month
-                    </a>
+                    <Link className="dropdown-item" to="#">
+                      Aujourd'hui
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      This Year
-                    </a>
+                    <Link className="dropdown-item" to="#">
+                      Ce Mois
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="#">
+                      Cette Année
+                    </Link>
                   </li>
                 </ul>
               </div>
-
-              <div className="card-body pb-0">
-                <h5 className="card-title">
-                  News &amp; Updates <span>| Today</span>
+              <div class="card-body pb-0">
+                <h5 class="card-title">
+                  Nouvelles &amp; Mises à jour <span>| Aujourd'hui</span>
                 </h5>
-
                 <div className="news">
                   <div className="post-item clearfix">
                     <img src="assets/img/news-1.jpg" alt="" />
                     <h4>
-                      <a href="#">Nihil blanditiis at in nihil autem</a>
+                      <Link to="#">
+                        Kadea a produit plus des logiels pour les Miniers
+                      </Link>
                     </h4>
                     <p>
-                      Sit recusandae non aspernatur laboriosam. Quia enim
-                      eligendi sed ut harum...
+                      Avec plus de 5 logiciels demandés par les miniers, kadea
+                      en a conçu et livré en totalité, ce qui fait de lui, le
+                      labo le plus productif de lubumbashi.
                     </p>
                   </div>
 
                   <div className="post-item clearfix">
                     <img src="assets/img/news-2.jpg" alt="" />
                     <h4>
-                      <a href="#">Quidem autem et impedit</a>
+                      <Link to="#">
+                        Le fermier Abedy a livré plus de viande boeufs ce mois
+                      </Link>
                     </h4>
                     <p>
-                      Illo nemo neque maiores vitae officiis cum eum turos elan
-                      dries werona nande...
+                      Avec plus de 20 boeufs, abedy a satifait à toutes les
+                      commandes des entreprises minières pendant cette periode
+                      de festivité...
                     </p>
                   </div>
 
                   <div className="post-item clearfix">
                     <img src="assets/img/news-3.jpg" alt="" />
                     <h4>
-                      <a href="#">
+                      <Link to="#">
                         Id quia et et ut maxime similique occaecati ut
-                      </a>
+                      </Link>
                     </h4>
                     <p>
                       Fugiat voluptas vero eaque accusantium eos. Consequuntur
@@ -745,7 +686,7 @@ const MainSeller = () => {
                   <div className="post-item clearfix">
                     <img src="assets/img/news-4.jpg" alt="" />
                     <h4>
-                      <a href="#">Laborum corporis quo dara net para</a>
+                      <Link to="#">Laborum corporis quo dara net para</Link>
                     </h4>
                     <p>
                       Qui enim quia optio. Eligendi aut asperiores enim
@@ -756,7 +697,9 @@ const MainSeller = () => {
                   <div className="post-item clearfix">
                     <img src="assets/img/news-5.jpg" alt="" />
                     <h4>
-                      <a href="#">Et dolores corrupti quae illo quod dolor</a>
+                      <Link to="#">
+                        Et dolores corrupti quae illo quod dolor
+                      </Link>
                     </h4>
                     <p>
                       Odit ut eveniet modi reiciendis. Atque cupiditate libero
@@ -764,11 +707,28 @@ const MainSeller = () => {
                     </p>
                   </div>
                 </div>
+                {/* End sidebar recent posts */}
               </div>
             </div>
+
+            {/* End News & Updates */}
           </div>
+          {/* End Right side columns */}
         </div>
       </section>
+      <footer id="footer" class="footer">
+        <div class="copyright">
+          &copy; Copyright{" "}
+          <strong>
+            <span>Small-erp</span>
+          </strong>
+          . All Rights Reserved
+        </div>
+        <div class="credits">
+          Designed by{" "}
+          <Link to="https://kadea.academy/">Lubumbashi Digital Academy</Link>
+        </div>
+      </footer>
     </main>
   );
 };

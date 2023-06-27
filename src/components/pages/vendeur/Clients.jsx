@@ -1,9 +1,11 @@
+import React from "react";
 import Header from "../../header/Header";
-import SideBarMining from "../../sideBars/SideBarMining";
 import useAuth from "../../../hooks/useAuth";
-import MainQuototation from "../../mains/mining/MainQutotation";
+// import axios from "axios";
+import SideBarVendeur from "../../sideBars/SideBarVendeur";
+import MainClients from "../../mains/vendeur/MainClients";
 
-const CotationMining = () => {
+function Clients() {
   const { auth } = useAuth();
   return (
     <div>
@@ -13,11 +15,10 @@ const CotationMining = () => {
         prenom={auth.prenomUser}
         userRole={auth.roles}
       />
-      <SideBarMining />
-
-      <MainQuototation />
+      <SideBarVendeur />
+      <MainClients />
     </div>
   );
-};
+}
 
-export default CotationMining;
+export default Clients;

@@ -15,6 +15,7 @@ import StockVendeur from "./components/pages/vendeur/StockVendeur";
 import PlanDeProduction from "./components/pages/vendeur/PlandDeProduction";
 import ComptabiliteVendeur from "./components/pages/vendeur/ComptabiliteVendeur";
 import PortefueilVendeur from "./components/pages/vendeur/PortefueilVendeur";
+import Clients from "./components/pages/vendeur/Clients";
 /**---------------------------------------------------------------------------------------
  *                    IMPORTATION PAGE MINING
  *---------------------------------------------------------------------------------------*/
@@ -65,6 +66,7 @@ function App() {
           <Route path="/cotationVendeur" element={<CotationVendeur />} />
           <Route path="/commandeVendeur" element={<CommandesVendeur />} />
           <Route path="/stockVendeur" element={<StockVendeur />} />
+          <Route path="/Clients" element={<Clients />} />
           <Route
             path="/planDeProductionVendeur"
             element={<PlanDeProduction />}
