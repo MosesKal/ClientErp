@@ -4,7 +4,11 @@ const EntrepriseForm = ({ onSubmit, onChange, onImageChange }) => {
   const [values, setValues] = useState({});
 
   const handleChange = (e) => {
-    setValues({ ...values, [e.target.id]: e.target.value });
+    setValues((prevValues) => ({
+      ...prevValues,
+      [e.target.id]: e.target.value,
+    }));
+
     onChange({ entreprise: { ...values, [e.target.id]: e.target.value } });
   };
 
@@ -13,7 +17,7 @@ const EntrepriseForm = ({ onSubmit, onChange, onImageChange }) => {
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      setValues({ ...values, profil: reader.result });
+      setValues({ ...values, Profil: reader.result });
     };
 
     if (file) {
@@ -109,7 +113,7 @@ const EntrepriseForm = ({ onSubmit, onChange, onImageChange }) => {
               className="form-control"
               id="logo"
               required
-              onChange={onImageChange}
+              onChange={handleImageChange}
             />
           </div>
         </div>
