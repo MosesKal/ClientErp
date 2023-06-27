@@ -1,17 +1,20 @@
 import React, { useState } from "react";
+import useAuth from "../hooks/useAuth";
 
-const ParticulierForm = ({ onSubmit, onChange }) => {
+const ParticulierForm = ({ onSubmit }) => {
   const [values, setValues] = useState({});
+  const { setDataForm } = useAuth();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.id]: e.target.value });
-    onChange({ particulier: { ...values, [e.target.id]: e.target.value } });
+    // onChange({ particulier: { ...values, [e.target.id]: e.target.value } });
   };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    setValues({ ...values, profil: file });
+    setValues({ ...values, Profil: file });
   };
+  setDataForm(values);
 
   return (
     <div className="row">
@@ -79,14 +82,15 @@ const ParticulierForm = ({ onSubmit, onChange }) => {
         </div>
         <div className="row mt-2">
           <div className="col">
-            <label htmlFor="profil" className="form-label">
+            <label htmlFor="Profil" className="form-label">
               Photo de profil
             </label>
             <input
               type="file"
               className="form-control"
-              id="profil"
+              id="Profil"
               required
+              accept="image/*"
               onChange={handleImageChange}
             />
           </div>

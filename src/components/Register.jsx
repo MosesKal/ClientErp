@@ -1,55 +1,53 @@
 import React, { useState } from "react";
+import axios from "./../api/axios";
 import ParticulierForm from "./ParticulierForm";
 import EntrepriseForm from "./EntrepriseForm";
 import { Link } from "react-router-dom";
 import PartieIllustration from "./PartieIllustration";
-import axios from "./../api/axios";
+import useAuth from "../hooks/useAuth";
 
 const REGISTER_URL = "/register";
 
 const Register = () => {
   const [type, setType] = useState("1");
-  const [formValues, setFormValues] = useState({});
+  const { dataForm } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (type === "1") {
       try {
-        const formData = new FormData();
-        formData.append("type", "particulier");
-        formData.append("nom", formValues.particulier.nom);
-        formData.append("prenom", formValues.particulier.prenom);
-        formData.append("email", formValues.particulier.email);
-        formData.append("phone", formValues.particulier.phone);
-        formData.append("profil", formValues.particulier.profil);
+        // const formData = new FormData();
+        // formData.append("type", "particulier");
+        // formData.append("nom", formValues.particulier.nom);
+        // formData.append("prenom", formValues.particulier.prenom);
+        // formData.append("email", formValues.particulier.email);
+        // formData.append("phone", formValues.particulier.phone);
+        // formData.append("password", formValues.particulier.password);
+        // formData.append("Profil", formValues.particulier.Profil);
 
-        const response = await axios.post(REGISTER_URL, formData, {
+        const response = await axios.post(REGISTER_URL, dataForm, {
           headers: { "Content-Type": "multipart/form-data" },
         });
 
-        console.log(response.data);
       } catch (error) {
         console.log("Erreur", error);
       }
     } else if (type === "2") {
-      console.log(formValues.entreprise, type);
+      console.log(type);
     }
   };
 
-  const handleFormChange = (values) => {
-    setFormValues(values);
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setFormValues((prevValues) => ({
-      ...prevValues,
-      particulier: {
-        ...prevValues.particulier,
-        profil: file,
-      },
-    }));
-  };
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   console.log(file);
+  //   setFormValues((prevValues) => ({
+  //     ...prevValues,
+  //     particulier: {
+  //       ...prevValues.particulier,
+  //       Profil: URL
+  //     },
+  //   }));
+  // };
 
   return (
     <div className="container-fluid container-login vh-100">
@@ -59,7 +57,11 @@ const Register = () => {
           <div className="row align-item-center justify-content-center h-100">
             <div className="col-6">
               <h1 className="mb-3 mt-2">Inscription</h1>
-              <form onSubmit={handleSubmit} className="row" enctype="multipart/form-data">
+              <form
+                onSubmit={handleSubmit}
+                className="row"
+                encType="multipart/form-data"
+              >
                 <div className="row">
                   <div className="col-12">
                     <label htmlFor="type" className="form-label">
@@ -79,15 +81,10 @@ const Register = () => {
                 </div>
                 {type === "1" ? (
                   <ParticulierForm
-                    onSubmit={handleSubmit}
-                    onChange={handleFormChange}
-                    onImageChange={handleImageChange}
+                  // onImageChange={handleImageChange}
                   />
                 ) : (
-                  <EntrepriseForm
-                    onSubmit={handleSubmit}
-                    onChange={handleFormChange}
-                  />
+                  <EntrepriseForm />
                 )}
                 <div className="row mt-4">
                   <div className="d-grid gap-2">
