@@ -29,6 +29,7 @@ import RapportMining from "./components/pages/mining/RapportMining";
  *---------------------------------------------------------------------------------------*/
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Attent from "./components/Attent";
 
 import Layout from "./components/Layout";
 import RequireAuth from "./components/RequireAuth";
@@ -44,8 +45,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<Login />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/attent" element={<Attent />} />
 
         <Route element={<RequireAuth allowedRoles={[ROLES.MINING]} />}>
           <Route path="/mining" element={<DashboardMining />} />

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import useAuth from "../hooks/useAuth";
 
-const ParticulierForm = ({ onSubmit }) => {
+const ParticulierForm = () => {
   const [values, setValues] = useState({});
   const { setDataForm } = useAuth();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.id]: e.target.value });
-    // onChange({ particulier: { ...values, [e.target.id]: e.target.value } });
   };
 
   const handleImageChange = (e) => {
@@ -68,13 +67,13 @@ const ParticulierForm = ({ onSubmit }) => {
         </div>
         <div className="row">
           <div className="col mt-2">
-            <label htmlFor="phone" className="form-label">
+            <label htmlFor="telephone" className="form-label">
               Téléphone
             </label>
             <input
               type="text"
               className="form-control"
-              id="phone"
+              id="telephone"
               required
               onChange={handleChange}
             />
