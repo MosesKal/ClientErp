@@ -3,14 +3,12 @@ import SideBarVendeur from "../../sideBars/SideBarVendeur";
 import MainCotation from "../../mains/vendeur/MainCotation";
 import useAuth from "../../../hooks/useAuth";
 
-
 const CotationVendeur = () => {
-
   const { auth } = useAuth();
 
   return (
     <div>
-            <Header
+      <Header
         imgProfile={auth.profilUser}
         nom={auth.nomUser}
         prenom={auth.prenomUser}

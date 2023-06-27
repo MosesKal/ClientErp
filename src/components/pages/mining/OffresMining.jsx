@@ -1,11 +1,19 @@
 import Header from "../../header/Header";
 import SideBarMining from "../../sideBars/SideBarMining";
 import MainRapportMining from "../../mains/mining/MainRapportMining";
+import useAuth from "../../../hooks/useAuth";
 
 const OffresMining = () => {
+  const { auth } = useAuth();
+
   return (
     <div>
-      <Header />
+      <Header
+        imgProfile={auth.profilUser}
+        nom={auth.nomUser}
+        prenom={auth.prenomUser}
+        userRole={auth.roles}
+      />
       <SideBarMining />
       <MainRapportMining />
     </div>
