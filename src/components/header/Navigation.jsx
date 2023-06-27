@@ -1,5 +1,7 @@
+import "../styles/navigationStyle.css";
+
 import React from "react";
-const Navigation = ({ imgProfile, nom, prenom }) => {
+const Navigation = ({ imgProfile, nom, prenom, userRole }) => {
   return (
     <nav className="header-nav ms-auto">
       <ul className="d-flex align-items-center">
@@ -165,15 +167,33 @@ const Navigation = ({ imgProfile, nom, prenom }) => {
             href="#"
             data-bs-toggle="dropdown"
           >
-            <img src={imgProfile} alt="Profile" className="rounded-circle" />
+            {/* <span
+              className="containerProfil"
+              style={{ backgroundImage: `url(${imgProfile})` }}
+            >
+             <img src={imgProfile} alt="Profile" className="imgProfile" /> 
+            </span> */}
+
+            <span
+              className="containerProfil"
+              style={{
+                backgroundImage: `url(${imgProfile})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></span>
+
             <span className="d-none d-md-block dropdown-toggle ps-2">
               {prenom} {nom}
             </span>
           </a>
           <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li className="dropdown-header">
-              <h6>{prenom} {nom}</h6>
-              <span>Web Designer</span>
+              <h6>
+                {prenom} {nom}
+              </h6>
+              <span>{userRole}</span>
             </li>
             <li>
               <hr className="dropdown-divider" />
