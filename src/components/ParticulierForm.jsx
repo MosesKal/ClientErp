@@ -1,5 +1,18 @@
+import React, { useState } from "react";
 
-const ParticulierForm = ({ onSubmit }) => {
+const ParticulierForm = ({ onSubmit, onChange }) => {
+  const [values, setValues] = useState({});
+
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.id]: e.target.value });
+    onChange({ particulier: { ...values, [e.target.id]: e.target.value } });
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setValues({ ...values, profil: file });
+  };
+
   return (
     <div className="row">
       <div className="col-12">
@@ -8,7 +21,13 @@ const ParticulierForm = ({ onSubmit }) => {
             <label htmlFor="nom" className="form-label">
               Nom
             </label>
-            <input type="text" className="form-control" id="nom" required />
+            <input
+              type="text"
+              className="form-control"
+              id="nom"
+              required
+              onChange={handleChange}
+            />
           </div>
         </div>
         <div className="row">
@@ -16,7 +35,13 @@ const ParticulierForm = ({ onSubmit }) => {
             <label htmlFor="prenom" className="form-label">
               Prenom
             </label>
-            <input type="text" className="form-control" id="prenom" required />
+            <input
+              type="text"
+              className="form-control"
+              id="prenom"
+              required
+              onChange={handleChange}
+            />
           </div>
         </div>
         <div className="row">
@@ -33,6 +58,7 @@ const ParticulierForm = ({ onSubmit }) => {
                 className="form-control"
                 id="email"
                 required
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -42,7 +68,13 @@ const ParticulierForm = ({ onSubmit }) => {
             <label htmlFor="phone" className="form-label">
               Téléphone
             </label>
-            <input type="text" className="form-control" id="phone" required />
+            <input
+              type="text"
+              className="form-control"
+              id="phone"
+              required
+              onChange={handleChange}
+            />
           </div>
         </div>
         <div className="row mt-2">
@@ -50,7 +82,13 @@ const ParticulierForm = ({ onSubmit }) => {
             <label htmlFor="profil" className="form-label">
               Photo de profil
             </label>
-            <input type="file" className="form-control" id="profil" required />
+            <input
+              type="file"
+              className="form-control"
+              id="profil"
+              required
+              onChange={handleImageChange}
+            />
           </div>
         </div>
         <div className="row mt-2">
@@ -63,6 +101,7 @@ const ParticulierForm = ({ onSubmit }) => {
               className="form-control"
               id="password"
               required
+              onChange={handleChange}
             />
           </div>
         </div>

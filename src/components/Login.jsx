@@ -29,8 +29,11 @@ const Login = () => {
 
       const accessToken = response?.data?.data?.accessToken;
       const roles = response?.data?.data?.roles;
+      const profilUser = response?.data?.data?.profileUser;
+      const nomUser = response?.data?.data?.nomUser;
+      const prenomUser = response?.data?.data?.prenomUser;
 
-      setAuth({ roles, accessToken });
+      setAuth({ roles, accessToken,profilUser, nomUser, prenomUser });
       setMail("");
       setPwd("");
       navigate(`/${roles}`);

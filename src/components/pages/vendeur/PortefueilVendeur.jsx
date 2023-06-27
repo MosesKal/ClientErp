@@ -11,5 +11,4 @@ const PortefueilVendeur = () => {
     </div>
   );
 };
-
 export default PortefueilVendeur;

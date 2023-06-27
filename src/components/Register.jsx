@@ -1,17 +1,54 @@
 import React, { useState } from "react";
 import ParticulierForm from "./ParticulierForm";
 import EntrepriseForm from "./EntrepriseForm";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PartieIllustration from "./PartieIllustration";
+import axios from "./../api/axios";
+
+const REGISTER_URL = "/register";
 
 const Register = () => {
-  const [type, setType] = useState(1);
+  const [type, setType] = useState("1");
+  const [formValues, setFormValues] = useState({});
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (type === "1") {
+      try {
+        const formData = new FormData();
+        formData.append("type", "particulier");
+        formData.append("nom", formValues.particulier.nom);
+        formData.append("prenom", formValues.particulier.prenom);
+        formData.append("email", formValues.particulier.email);
+        formData.append("phone", formValues.particulier.phone);
+        formData.append("profil", formValues.particulier.profil);
+
+        const response = await axios.post(REGISTER_URL, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+
+        console.log(response.data);
+      } catch (error) {
+        console.log("Erreur", error);
+      }
     } else if (type === "2") {
+      console.log(formValues.entreprise, type);
     }
+  };
+
+  const handleFormChange = (values) => {
+    setFormValues(values);
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      particulier: {
+        ...prevValues.particulier,
+        profil: file,
+      },
+    }));
   };
 
   return (
@@ -22,33 +59,39 @@ const Register = () => {
           <div className="row align-item-center justify-content-center h-100">
             <div className="col-6">
               <h1 className="mb-3 mt-2">Inscription</h1>
-              <form onSubmit={handleSubmit} className="row">
+              <form onSubmit={handleSubmit} className="row" enctype="multipart/form-data">
                 <div className="row">
                   <div className="col-12">
                     <label htmlFor="type" className="form-label">
-                      Quel type de préstateur êtes-vous ?
+                      Quel type de prestataire êtes-vous ?
                     </label>
                     <select
                       className="form-select form-select mt-4"
                       aria-label="form-select-lg example"
                       id="type"
+                      value={type}
                       onChange={(e) => setType(e.target.value)}
                     >
-                      <option value="1" defaultValue>
-                        Particulier
-                      </option>
+                      <option value="1">Particulier</option>
                       <option value="2">Une entreprise</option>
                     </select>
                   </div>
                 </div>
                 {type === "1" ? (
-                  <ParticulierForm onSubmit={handleSubmit} />
+                  <ParticulierForm
+                    onSubmit={handleSubmit}
+                    onChange={handleFormChange}
+                    onImageChange={handleImageChange}
+                  />
                 ) : (
-                  <EntrepriseForm onSubmit={handleSubmit} />
+                  <EntrepriseForm
+                    onSubmit={handleSubmit}
+                    onChange={handleFormChange}
+                  />
                 )}
                 <div className="row mt-4">
                   <div className="d-grid gap-2">
-                    <button className="btn btn-primary" type="button">
+                    <button className="btn btn-primary" type="submit">
                       S'inscrire sur la plateforme
                     </button>
                   </div>
