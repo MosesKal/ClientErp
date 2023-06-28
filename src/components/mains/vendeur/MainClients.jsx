@@ -201,7 +201,7 @@ function MainClients() {
           </div>
 
           {isPopupOpen && (
-            <div className="row form-wrapper">
+            <div className="row form-wrapper addClient">
               <form className="frofile-form">
                 <div class="row mb-3">
                   <label
