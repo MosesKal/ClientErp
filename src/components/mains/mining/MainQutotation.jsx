@@ -4,7 +4,6 @@ import { FiChevronDown } from "react-icons/fi";
 import { AiOutlineEdit, AiOutlineDelete, AiOutlineMail } from "react-icons/ai";
 import Swal from "sweetalert2";
 import "../../../index.css";
-// import "../../index.css";
 
 function MainQuototation() {
   const [status, setStatus] = useState("open");
