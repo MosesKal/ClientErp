@@ -474,7 +474,7 @@ function MainQuototation() {
                 <div className="text-end mt-5 mb-3">
                   <button
                     id="inputState"
-                    class="btn btn-success"
+                    class="btn btn-primary"
                     onClick={handleCreate}
                   >
                     Créer une DC
