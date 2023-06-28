@@ -41,6 +41,9 @@ function MainQuototation() {
 
   const [quotations, setQuotations] = useState([]);
 
+  console.log("---------", rows);
+  console.log(quotations);
+
   const handleCreate = (e) => {
     e.preventDefault();
 
@@ -71,12 +74,12 @@ function MainQuototation() {
       return;
     }
     const address = document.getElementById("adress").value;
-    const addressRegex =
-      /^[0-9]+, [a-zA-Z\s]+, [a-zA-Z\s]+, [a-zA-Z\s]+, [a-zA-Z\s]+$/;
-    if (!addressRegex.test(address)) {
-      alert("Le format de l'adresse est incorrect");
-      return;
-    }
+    // const addressRegex =
+    //   /^[0-9]+, [a-zA-Z\s]+, [a-zA-Z\s]+, [a-zA-Z\s]+, [a-zA-Z\s]+$/;
+    // if (!addressRegex.test(address)) {
+    //   alert("Le format de l'adresse est incorrect");
+    //   return;
+    // }
 
     const dcNumber = document.getElementById("numero").value;
     const dcNumberRegex = /^[a-zA-Z0-9]{5}$/;
@@ -166,7 +169,7 @@ function MainQuototation() {
 
       swalWithBootstrapButtons
         .fire({
-          title: "Êtes-vous sûr(e) ?",
+          title: "Ête1001s-vous sûr(e) ?",
           text: "Êtes-vous sûr(e) de vouloir supprimer cette cotation ?",
           icon: "warning",
           showCancelButton: true,
