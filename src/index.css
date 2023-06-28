@@ -1306,3 +1306,10 @@ h6 {
 .custom-header {
   font-weight: 700;
 }
+.addClient {
+  background-color: white;
+  padding: 30px;
+  width: 800px;
+  top: 50%;
+  left: 50%;
+}
