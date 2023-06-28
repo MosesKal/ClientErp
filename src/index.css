@@ -1302,3 +1302,7 @@ h6 {
 .overlay .comand {
   display: none;
 }
+
+.custom-header {
+  font-weight: 700;
+}

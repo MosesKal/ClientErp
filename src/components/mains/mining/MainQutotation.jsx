@@ -117,7 +117,7 @@ function MainQuototation() {
   const [endDate, setEndDate] = useState("");
   const [dateError, setDateError] = useState(false);
 
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const [paymentOption, setPaymentOption] = useState("indays");
 
   const handleStartDateChange = (e) => {
@@ -129,7 +129,7 @@ function MainQuototation() {
     setEndDate(e.target.value);
     validateDates(startDate, e.target.value);
 
-    // Vérifiez si la date de fin est atteinte et mettez à jour le statut en conséquence
+    
     const currentDate = new Date();
     const selectedEndDate = new Date(e.target.value);
     if (selectedEndDate <= currentDate) {

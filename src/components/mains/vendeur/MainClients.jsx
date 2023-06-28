@@ -1,15 +1,90 @@
 import React, { useState } from "react";
-import CustomMultiValueOperator from "../../ClientsFiltering";
+import { DataGrid } from "@mui/x-data-grid";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
+import { BsTrash, BsPencil } from "react-icons/bs";
+import "../../../index.css";
+
+const columns = [
+  { field: "id", headerName: "ID", width: 120 },
+  { field: "firstName", headerName: "First Name", width: 160 },
+  { field: "lastName", headerName: "Last Name", width: 160 },
+  { field: "adresse", headerName: "Adresse", width: 260 },
+  { field: "phone", headerName: "Phone", width: 220 },
+  { field: "email", headerName: "Email", width: 230 },
+
+  {
+    field: "fullName",
+    headerName: "Full name",
+    description: "This column has a value getter and is not sortable.",
+    sortable: false,
+    width: 160,
+    valueGetter: (params) =>
+      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+  },
+  {
+    field: "action",
+    headerName: "Action",
+    width: 130,
+    renderCell: (params) => (
+      <div>
+        <DropdownButton id="dropdown-basic-button" title="Actions">
+          <Dropdown.Item onClick={() => handleEdit(params)}>
+            Edit <BsPencil />
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleDelete(params)}>
+            Delete <BsTrash />
+          </Dropdown.Item>
+        </DropdownButton>
+      </div>
+    ),
+  },
+];
+
+const rows = [
+  {
+    id: 1,
+    firstName: "baki",
+    lastName: "kyungu",
+    adresse: "35 Route kasimba",
+    phone: "+243 97 113 5557",
+    email: "abbakikyungu@gmail.com",
+    action: "",
+  },
+  {
+    id: 2,
+    firstName: "moise",
+    lastName: "kalunga",
+    adresse: "35 savonier",
+    phone: "+243 97 113 5587",
+    email: "moseskal@gmail.com",
+    action: "",
+  },
+  {
+    id: 3,
+    firstName: "jael",
+    lastName: "bukasa",
+    adresse: "35 kasapa",
+    phone: "+243 97 113 5887",
+    email: "jaelbukasa407@gmail.com",
+    action: "",
+  },
+];
+const handleEdit = (params) => {
+  // Handle edit action
+  console.log("Edit", params);
+};
+
+const handleDelete = (params) => {
+  // Handle delete action
+  console.log("Delete", params);
+};
 
 function MainClients() {
   const [fullName, setFullName] = useState("");
   const [fullNameError, setFullNameError] = useState("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [twitter, setTwitter] = useState("");
-  const [twitterError, setTwitterError] = useState("");
-  const [linkedin, setLinkedin] = useState("");
-  const [linkedinError, setLinkedinError] = useState("");
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const handleEmailChange = (event) => {
@@ -34,32 +109,7 @@ function MainClients() {
       setFullNameError("");
     }
   };
-  const handleTwitterChange = (event) => {
-    const value = event.target.value;
-    setTwitter(value);
 
-    const twitterRegex =
-      /^https?:\/\/(www\.)?twitter\.com\/(#!\/)?[a-zA-Z0-9_]+$/;
-
-    if (!twitterRegex.test(value)) {
-      setTwitterError("URL du profil Twitter invalide.");
-    } else {
-      setTwitterError("");
-    }
-  };
-  const handleLinkedinChange = (event) => {
-    const value = event.target.value;
-    setLinkedin(value);
-
-    const linkedinRegex =
-      /^https?:\/\/(www\.)?linkedin\.com\/(in|pub|company)\/[a-zA-Z0-9_-]+\/?$/;
-
-    if (!linkedinRegex.test(value)) {
-      setLinkedinError("URL du profil Linkedin invalide.");
-    } else {
-      setLinkedinError("");
-    }
-  };
   const handlePhoneChange = (event) => {
     const value = event.target.value;
     setPhone(value);
@@ -85,21 +135,6 @@ function MainClients() {
       setEmailError("Adresse e-mail invalide.");
       return;
     }
-    const twitterRegex =
-      /^https?:\/\/(www\.)?twitter\.com\/(#!\/)?[a-zA-Z0-9_]+$/;
-
-    if (!twitterRegex.test(twitter)) {
-      setTwitterError("URL du profil Twitter invalide.");
-      return;
-    }
-
-    const linkedinRegex =
-      /^https?:\/\/(www\.)?linkedin\.com\/(in|pub|company)\/[a-zA-Z0-9_-]+\/?$/;
-
-    if (!linkedinRegex.test(linkedin)) {
-      setLinkedinError("URL du profil Linkedin invalide.");
-      return;
-    }
 
     const phoneRegex = /^(?:\+?243|0)\s?(?:97|83|81|99|89|90)(?:\s?\d){7}$/;
 
@@ -109,195 +144,194 @@ function MainClients() {
     }
   };
 
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    setPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setPopupOpen(false);
+  };
+
   return (
-    <main id="main" class="main">
-      <div class="pagetitle">
-        <h1>Dashboard Vendeur</h1>
-        <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="index.html">Home</a>
-            </li>
-            <li class="breadcrumb-item">Clients</li>
-          </ol>
-        </nav>
-      </div>
-      <section class="section mt-3">
-        <div class="row">
-          <CustomMultiValueOperator />
+    <div className={isPopupOpen ? "overlay" : ""}>
+      <main id="main" class="main">
+        <div class="pagetitle">
+          <h1>Dashboard Vendeur</h1>
+          <nav>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="index.html">Home</a>
+              </li>
+              <li class="breadcrumb-item">Clients</li>
+            </ol>
+          </nav>
+        </div>
+        <div className="card-body">
+          <div className="d-flex justify-content-between mx-3 mt-5">
+            <h5 class="card-title">Liste des Clients</h5>
+
+            <button
+              className="btn btn-primary {isPopupOpen ? overlay}"
+              style={{ height: "40px" }}
+              onClick={handleButtonClick}
+            >
+              Ajouter
+            </button>
+          </div>
         </div>
 
-        {/* <div className="row form-wrapper">
-          <form className="frofile-form">
-            <div class="row mb-3">
-              <label for="fullName" class="col-md-4 col-lg-3 col-form-label">
-                Full Name
-              </label>
-              <div class="col-md-8 col-lg-9">
-                <input
-                  name="fullName"
-                  type="text"
-                  className="form-control"
-                  id="fullName"
-                  placeholder="Baki kyungu"
-                  value={fullName}
-                  onChange={handleFullNameChange}
-                  required
-                />
-                {fullNameError && (
-                  <div className="text-danger">{fullNameError}</div>
-                )}
-              </div>
-            </div>
+        <section class="section mt-3">
+          <div className="row comand" style={{ width: "100%" }}>
+            <DataGrid
+              rows={rows}
+              columns={columns.map((column) => ({
+                ...column,
+                headerClassName: "custom-header",
+              }))}
+              initialState={{
+                pagination: {
+                  paginationModel: { page: 0, pageSize: 5 },
+                },
+              }}
+              pageSizeOptions={[5, 10]}
+              checkboxSelection
+            />
+          </div>
 
-            <div class="row mb-3">
-              <label for="Country" class="col-md-4 col-lg-3 col-form-label">
-                Province
-              </label>
-              <div class="col-md-8 col-lg-9">
-                <select
-                  name="province"
-                  id="province"
-                  class="form-control"
-                  required
-                >
-                  <option value="province" selected>
-                    Haut-katanga
-                  </option>
-                  <option value="province">Equateur</option>
-                  <option value="province">Nord-Ubangui </option>
-                  <option value="province">Mongala</option>
-                  <option value="province">Bas-Uele</option>
-                  <option value="province">Haut-Uele </option>
-                  <option value="province">Kinshasa</option>
-                  <option value="province">Lomami</option>
-                  <option value="province">Haut-lomami</option>
-                  <option value="province">Lualaba</option>
-                </select>
-              </div>
-            </div>
+          {isPopupOpen && (
+            <div className="row form-wrapper">
+              <form className="frofile-form">
+                <div class="row mb-3">
+                  <label
+                    for="fullName"
+                    class="col-md-4 col-lg-3 col-form-label"
+                  >
+                    Full Name
+                  </label>
+                  <div class="col-md-8 col-lg-9">
+                    <input
+                      name="fullName"
+                      type="text"
+                      className="form-control"
+                      id="fullName"
+                      placeholder="Baki kyungu"
+                      value={fullName}
+                      onChange={handleFullNameChange}
+                      required
+                    />
+                    {fullNameError && (
+                      <div className="text-danger">{fullNameError}</div>
+                    )}
+                  </div>
+                </div>
 
-            <div class="row mb-3">
-              <label for="Country" class="col-md-4 col-lg-3 col-form-label">
-                Country
-              </label>
-              <div class="col-md-8 col-lg-9">
-                <input
-                  name="country"
-                  type="text"
-                  class="form-control"
-                  id="Country"
-                  placeholder="rdc"
-                />
-              </div>
-            </div>
+                <div class="row mb-3">
+                  <label for="Country" class="col-md-4 col-lg-3 col-form-label">
+                    Province
+                  </label>
+                  <div class="col-md-8 col-lg-9">
+                    <select
+                      name="province"
+                      id="province"
+                      class="form-control"
+                      required
+                    >
+                      <option value="province" selected>
+                        Haut-katanga
+                      </option>
+                      <option value="province">Equateur</option>
+                      <option value="province">Nord-Ubangui </option>
+                      <option value="province">Mongala</option>
+                      <option value="province">Bas-Uele</option>
+                      <option value="province">Haut-Uele </option>
+                      <option value="province">Kinshasa</option>
+                      <option value="province">Lomami</option>
+                      <option value="province">Haut-lomami</option>
+                      <option value="province">Lualaba</option>
+                    </select>
+                  </div>
+                </div>
 
-            <div class="row mb-3">
-              <label for="Address" class="col-md-4 col-lg-3 col-form-label">
-                Address
-              </label>
-              <div class="col-md-8 col-lg-9">
-                <input
-                  name="address"
-                  type="text"
-                  class="form-control"
-                  id="Address"
-                  placeholder="A108 Adam Street, New York, NY 535022"
-                />
-              </div>
-            </div>
+                <div class="row mb-3">
+                  <label for="Address" class="col-md-4 col-lg-3 col-form-label">
+                    Address
+                  </label>
+                  <div class="col-md-8 col-lg-9">
+                    <input
+                      name="address"
+                      type="text"
+                      class="form-control"
+                      id="Address"
+                      placeholder="A108 Adam Street, New York, NY 535022"
+                    />
+                  </div>
+                </div>
 
-            <div class="row mb-3">
-              <label for="Phone" class="col-md-4 col-lg-3 col-form-label">
-                Phone
-              </label>
-              <div class="col-md-8 col-lg-9">
-                <input
-                  name="phone"
-                  type="text"
-                  class="form-control"
-                  id="Phone"
-                  placeholder="097 11 355 57"
-                  value={phone}
-                  onChange={handlePhoneChange}
-                  required
-                />
-                {phoneError && <div className="text-danger">{phoneError}</div>}
-              </div>
-            </div>
+                <div class="row mb-3">
+                  <label for="Phone" class="col-md-4 col-lg-3 col-form-label">
+                    Phone
+                  </label>
+                  <div class="col-md-8 col-lg-9">
+                    <input
+                      name="phone"
+                      type="text"
+                      class="form-control"
+                      id="Phone"
+                      placeholder="097 11 355 57"
+                      value={phone}
+                      onChange={handlePhoneChange}
+                      required
+                    />
+                    {phoneError && (
+                      <div className="text-danger">{phoneError}</div>
+                    )}
+                  </div>
+                </div>
 
-            <div class="row mb-3">
-              <label for="Email" class="col-md-4 col-lg-3 col-form-label">
-                Email
-              </label>
-              <div class="col-md-8 col-lg-9">
-                <input
-                  name="email"
-                  type="email"
-                  className="form-control"
-                  id="Email"
-                  placeholder="abbakikyungu@gmail.com"
-                  value={email}
-                  onChange={handleEmailChange}
-                  required
-                />
-                {emailError && <div className="text-danger">{emailError}</div>}
-              </div>
-            </div>
+                <div class="row mb-3">
+                  <label for="Email" class="col-md-4 col-lg-3 col-form-label">
+                    Email
+                  </label>
+                  <div class="col-md-8 col-lg-9">
+                    <input
+                      name="email"
+                      type="email"
+                      className="form-control"
+                      id="Email"
+                      placeholder="abbakikyungu@gmail.com"
+                      value={email}
+                      onChange={handleEmailChange}
+                      required
+                    />
+                    {emailError && (
+                      <div className="text-danger">{emailError}</div>
+                    )}
+                  </div>
+                </div>
 
-            <div class="row mb-3">
-              <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">
-                Twitter Profile
-              </label>
-              <div class="col-md-8 col-lg-9">
-                <input
-                  name="twitter"
-                  type="text"
-                  class="form-control"
-                  id="Twitter"
-                  placeholder="https://twitter.com/username"
-                  value={twitter}
-                  onChange={handleTwitterChange}
-                />
-                {twitterError && (
-                  <div className="text-danger">{twitterError}</div>
-                )}
-              </div>
+                <div class="text-center">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    onClick={handleSubmit}
+                  >
+                    Save
+                  </button>
+                  <button
+                    className="btn btn-secondary ms-2"
+                    onClick={handleClosePopup}
+                  >
+                    Quitter
+                  </button>
+                </div>
+              </form>
             </div>
-
-            <div class="row mb-3">
-              <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">
-                Linkedin Profile
-              </label>
-              <div class="col-md-8 col-lg-9">
-                <input
-                  name="linkedin"
-                  type="text"
-                  class="form-control"
-                  id="Linkedin"
-                  placeholder="https://linkedin.com/#"
-                  value={linkedin}
-                  onChange={handleLinkedinChange}
-                />
-                {linkedinError && (
-                  <div className="text-danger">{linkedinError}</div>
-                )}
-              </div>
-            </div>
-
-            <div class="text-center">
-              <button
-                type="submit"
-                class="btn btn-primary"
-                onClick={handleSubmit}
-              >
-                Save
-              </button>
-            </div>
-          </form>
-        </div> */}
-      </section>
-    </main>
+          )}
+        </section>
+      </main>
+    </div>
   );
 }
 

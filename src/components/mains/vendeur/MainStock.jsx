@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import DataTable from "./TableProduits";
 const MainStock = () => {
   return (
     <div>
@@ -41,65 +42,10 @@ const MainStock = () => {
               <h5 class="card-title">
                 Tous les Produits <span>| stock</span>
               </h5>
-
-              <table class="table table-borderless datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Produit</th>
-                    <th scope="col">Catégorie</th>
-                    <th scope="col">Stock Actuel</th>
-                    <th scope="col">Dernière Entrée</th>
-                    <th scope="col">Dernière Sortie</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">#1</th>
-                    <td>Produit 1</td>
-                    <td>Catégorie A</td>
-                    <td>10</td>
-                    <td>2023-06-25</td>
-                    <td>2023-06-24</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">#2</th>
-                    <td>Produit 2</td>
-                    <td>Catégorie B</td>
-                    <td>5</td>
-                    <td>2023-06-26</td>
-                    <td>2023-06-23</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">#3</th>
-                    <td>Produit 3</td>
-                    <td>Catégorie A</td>
-                    <td>2</td>
-                    <td>2023-06-25</td>
-                    <td>Aucune sortie</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">#4</th>
-                    <td>Produit 4</td>
-                    <td>Catégorie C</td>
-                    <td>8</td>
-                    <td>Aucune entrée</td>
-                    <td>2023-06-22</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">#5</th>
-                    <td>Produit 5</td>
-                    <td>Catégorie d</td>
-                    <td>8</td>
-                    <td>Aucune entrée</td>
-                    <td>2023-06-23</td>
-                  </tr>
-                </tbody>
-              </table>
+              <DataTable />
             </div>
           </div>
         </div>
-        {/* <!-- End Page Title --> */}
       </main>
     </div>
   );
