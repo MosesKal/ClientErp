@@ -1293,3 +1293,12 @@ h6 {
 .my-custom-class {
   z-index: 9999;
 }
+
+.overlay .cotation {
+  z-index: 9999;
+  display: none;
+}
+
+.overlay .comand {
+  display: none;
+}
