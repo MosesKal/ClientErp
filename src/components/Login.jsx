@@ -33,12 +33,12 @@ const Login = () => {
       const nomUser = response?.data?.data?.nomUser;
       const prenomUser = response?.data?.data?.prenomUser;
 
-      setAuth({ roles, accessToken,profilUser, nomUser, prenomUser });
+      setAuth({ roles, accessToken, profilUser, nomUser, prenomUser });
       setMail("");
       setPwd("");
       navigate(`/${roles}`);
     } catch (err) {
-      setAlert(err.response.data.message);
+      setAlert(err?.response?.data?.message);
     }
   };
 

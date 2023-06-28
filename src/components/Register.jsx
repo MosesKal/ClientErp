@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import axios from "./../api/axios";
 import ParticulierForm from "./ParticulierForm";
 import EntrepriseForm from "./EntrepriseForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PartieIllustration from "./PartieIllustration";
 import useAuth from "../hooks/useAuth";
 
 const REGISTER_URL = "/register";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [type, setType] = useState("1");
   const { dataForm } = useAuth();
 
@@ -16,19 +17,10 @@ const Register = () => {
     e.preventDefault();
     if (type === "1") {
       try {
-        // const formData = new FormData();
-        // formData.append("type", "particulier");
-        // formData.append("nom", formValues.particulier.nom);
-        // formData.append("prenom", formValues.particulier.prenom);
-        // formData.append("email", formValues.particulier.email);
-        // formData.append("phone", formValues.particulier.phone);
-        // formData.append("password", formValues.particulier.password);
-        // formData.append("Profil", formValues.particulier.Profil);
-
         const response = await axios.post(REGISTER_URL, dataForm, {
           headers: { "Content-Type": "multipart/form-data" },
         });
-
+        navigate("/attent");
       } catch (error) {
         console.log("Erreur", error);
       }
@@ -36,18 +28,6 @@ const Register = () => {
       console.log(type);
     }
   };
-
-  // const handleImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   console.log(file);
-  //   setFormValues((prevValues) => ({
-  //     ...prevValues,
-  //     particulier: {
-  //       ...prevValues.particulier,
-  //       Profil: URL
-  //     },
-  //   }));
-  // };
 
   return (
     <div className="container-fluid container-login vh-100">
@@ -79,13 +59,7 @@ const Register = () => {
                     </select>
                   </div>
                 </div>
-                {type === "1" ? (
-                  <ParticulierForm
-                  // onImageChange={handleImageChange}
-                  />
-                ) : (
-                  <EntrepriseForm />
-                )}
+                {type === "1" ? <ParticulierForm /> : <EntrepriseForm />}
                 <div className="row mt-4">
                   <div className="d-grid gap-2">
                     <button className="btn btn-primary" type="submit">
