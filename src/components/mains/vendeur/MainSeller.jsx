@@ -477,11 +477,9 @@ const MainSeller = () => {
                     <div class="activite-label">32 min</div>
                     <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
                     <div class="activity-content">
-                      Quia quae rerum
                       <Link to="#" class="fw-bold text-dark">
-                        explicabo officiis
+                        Ofre Envoyée avec sussès
                       </Link>
-                      beatae
                     </div>
                   </div>
                   {/* End activity item */}
@@ -716,19 +714,6 @@ const MainSeller = () => {
           {/* End Right side columns */}
         </div>
       </section>
-      <footer id="footer" class="footer">
-        <div class="copyright">
-          &copy; Copyright{" "}
-          <strong>
-            <span>Small-erp</span>
-          </strong>
-          . All Rights Reserved
-        </div>
-        <div class="credits">
-          Designed by{" "}
-          <Link to="https://kadea.academy/">Lubumbashi Digital Academy</Link>
-        </div>
-      </footer>
     </main>
   );
 };
