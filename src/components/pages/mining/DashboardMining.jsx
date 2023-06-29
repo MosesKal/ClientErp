@@ -1,10 +1,26 @@
+import { useEffect } from "react";
+import axios from "../../api/axios";
 import Header from "../../header/Header";
 import SideBarMining from "../../sideBars/SideBarMining";
 import MainMining from "../../mains/mining/MainMining";
 import useAuth from "../../../hooks/useAuth";
 
+
 const DashboardMining = () => {
-  const { auth } = useAuth();
+  const { auth, dataMining, setDataMining } = useAuth();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/getDataMining/${auth.accessToken}`);
+        setDataMining(response?.data?.userData)
+      } catch (error) {
+        console.log("Une erreur s'est produite");
+      }
+    };
+    fetchData();
+  }, []);
+
 
   return (
     <div>

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import moment from "moment";
 import { UilTimes } from "@iconscout/react-unicons";
 import { FiChevronDown } from "react-icons/fi";
 import { AiOutlineEdit, AiOutlineDelete, AiOutlineMail } from "react-icons/ai";
 import Swal from "sweetalert2";
 import "../../../index.css";
 
-function MainQuototation() {
+function MainQuototation({ data }) {
   const [status, setStatus] = useState("open");
+
+  console.log(data);
 
   const [rows, setRows] = useState([
     { id: 1, qty: "", description: "", detail: "" },
@@ -41,87 +44,38 @@ function MainQuototation() {
 
   const [quotations, setQuotations] = useState([]);
 
-  console.log("---------", rows);
-  console.log(quotations);
-
   const handleCreate = (e) => {
     e.preventDefault();
 
-    if (
-      document.getElementById("name").value === "" ||
-      document.getElementById("start").value === "" ||
-      document.getElementById("end").value === "" ||
-      document.getElementById("adress").value === "" ||
-      document.getElementById("numero").value === "" ||
-      document.getElementById("qty").value === "" ||
-      document.getElementById("desc").value === "" ||
-      document.getElementById("detail").value === ""
-    ) {
-      alert("Veuillez remplir tous les champs du formulaire.");
-      return;
-    }
-    // Add logic for creating the DC
-
-    const name = document.getElementById("name").value;
-    if (name.length < 4) {
-      alert("Le nom de l'entreprise doit comporter au moins 4 caractères");
-      return;
-    }
     const startDate = document.getElementById("start").value;
     const endDate = document.getElementById("end").value;
+    const description = document.getElementById("description").value;
     if (endDate <= startDate) {
       alert("La date de fin doit être supérieure à la date de début");
       return;
     }
-    const address = document.getElementById("adress").value;
-    // const addressRegex =
-    //   /^[0-9]+, [a-zA-Z\s]+, [a-zA-Z\s]+, [a-zA-Z\s]+, [a-zA-Z\s]+$/;
-    // if (!addressRegex.test(address)) {
-    //   alert("Le format de l'adresse est incorrect");
-    //   return;
-    // }
 
-    const dcNumber = document.getElementById("numero").value;
-    const dcNumberRegex = /^[a-zA-Z0-9]{5}$/;
-    if (!dcNumberRegex.test(dcNumber)) {
-      alert("Le numéro de la DC doit comporter 5 caractères alphanumériques");
-      return;
-    }
-    const paymentOption = document.getElementById("inputState").value;
-    const period = document.getElementById("period").value;
-    const periodRegex = /^[1-9]+$/;
-    if (!periodRegex.test(period)) {
-      alert("La période doit comporter uniquement des caractères de 1 à 9");
-      return;
-    }
     const newQuotation = {
-      name,
       startDate,
       endDate,
-      address,
-      dcNumber,
-      paymentOption,
-      period,
+      userid: data.Entreprise.id,
+      dateDebut: moment(startDate),
+      dateFin: moment(endDate),
+      duree: moment(endDate).diff(moment(startDate), "days"),
+      description: description,
+      produits: rows,
     };
 
     setQuotations([...quotations, newQuotation]);
-    // Réinitialisez les champs du formulaire après la création de la DC
     document.getElementById("name").value = "";
     document.getElementById("start").value = "";
     document.getElementById("end").value = "";
-    document.getElementById("adress").value = "";
-    document.getElementById("numero").value = "";
-    document.getElementById("period").value = "";
-
     setPopupOpen(false);
   };
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [dateError, setDateError] = useState(false);
-
-
-  const [paymentOption, setPaymentOption] = useState("indays");
 
   const handleStartDateChange = (e) => {
     setStartDate(e.target.value);
@@ -132,7 +86,6 @@ function MainQuototation() {
     setEndDate(e.target.value);
     validateDates(startDate, e.target.value);
 
-    
     const currentDate = new Date();
     const selectedEndDate = new Date(e.target.value);
     if (selectedEndDate <= currentDate) {
@@ -151,55 +104,49 @@ function MainQuototation() {
     }
   };
 
-  const handlePaymentOptionChange = (e) => {
-    const selectedOption = e.target.value;
-    setPaymentOption(selectedOption);
-  };
+  // const handleSend = (quotationIndex, action) => {
+  //   if (action === "delete") {
+  //     // Show confirmation popup
+  //     const swalWithBootstrapButtons = Swal.mixin({
+  //       customClass: {
+  //         confirmButton: "btn btn-success",
+  //         cancelButton: "btn btn-danger",
+  //       },
+  //       buttonsStyling: false,
+  //     });
 
-  const handleActionChange = (quotationIndex, action) => {
-    if (action === "delete") {
-      // Show confirmation popup
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger",
-        },
-        buttonsStyling: false,
-      });
-
-      swalWithBootstrapButtons
-        .fire({
-          title: "Ête1001s-vous sûr(e) ?",
-          text: "Êtes-vous sûr(e) de vouloir supprimer cette cotation ?",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonText: "Oui, supprimer",
-          cancelButtonText: "Non, annuler",
-          reverseButtons: true,
-        })
-        .then((result) => {
-          if (result.isConfirmed) {
-            // Remove the quotation from the table
-            const updatedQuotations = [...quotations];
-            updatedQuotations.splice(quotationIndex, 1);
-            setQuotations(updatedQuotations);
-            swalWithBootstrapButtons.fire(
-              "Supprimé !",
-              "La cotation a été supprimée avec succès.",
-              "success"
-            );
-          } else if (result.dismiss === Swal.DismissReason.cancel) {
-            swalWithBootstrapButtons.fire(
-              "Annulé",
-              "La suppression de la cotation a été annulée.",
-              "error"
-            );
-          }
-        });
-    } else {
-      console.log(`Quotation Index: ${quotationIndex}, Action: ${action}`);
-    }
-  };
+  //     swalWithBootstrapButtons
+  //       .fire({
+  //         title: "Ête1001s-vous sûr(e) ?",
+  //         text: "Êtes-vous sûr(e) de vouloir supprimer cette cotation ?",
+  //         icon: "warning",
+  //         showCancelButton: true,
+  //         confirmButtonText: "Oui, supprimer",
+  //         cancelButtonText: "Non, annuler",
+  //         reverseButtons: true,
+  //       })
+  //       .then((result) => {
+  //         if (result.isConfirmed) {
+  //           const updatedQuotations = [...quotations];
+  //           updatedQuotations.splice(quotationIndex, 1);
+  //           setQuotations(updatedQuotations);
+  //           swalWithBootstrapButtons.fire(
+  //             "Supprimé !",
+  //             "La cotation a été supprimée avec succès.",
+  //             "success"
+  //           );
+  //         } else if (result.dismiss === Swal.DismissReason.cancel) {
+  //           swalWithBootstrapButtons.fire(
+  //             "Annulé",
+  //             "La suppression de la cotation a été annulée.",
+  //             "error"
+  //           );
+  //         }
+  //       });
+  //   } else {
+  //     console.log(`Quotation Index: ${quotationIndex}, Action: ${action}`);
+  //   }
+  // };
 
   return (
     <div className={isPopupOpen ? "overlay" : ""}>
@@ -236,7 +183,7 @@ function MainQuototation() {
                 <th scope="col">Nom</th>
                 <th scope="col">Date de début</th>
                 <th scope="col">Date de fin</th>
-                <th scope="col">Id DC</th>
+                <th scope="col">Durée</th>
                 <th scope="col">Statut</th>
                 <th scope="col">Action</th>
               </tr>
@@ -244,10 +191,10 @@ function MainQuototation() {
             <tbody>
               {quotations.map((quotation, index) => (
                 <tr key={index}>
-                  <td>{quotation.name}</td>
+                  <td>{}</td>
                   <td>{quotation.startDate}</td>
                   <td>{quotation.endDate}</td>
-                  <td>{quotation.dcNumber}</td>
+                  <td>{quotation.duree}</td>
                   <td>{status === "open" ? "Ouvert" : "Fermé"}</td>
                   <td>
                     <div className="dropdown">
@@ -267,7 +214,7 @@ function MainQuototation() {
                         <li>
                           <button
                             className="dropdown-item"
-                            onClick={() => handleActionChange(index, "edit")}
+                            // onClick={() => handleActionChange(index, "edit")}
                           >
                             <AiOutlineEdit /> Edit
                           </button>
@@ -275,7 +222,7 @@ function MainQuototation() {
                         <li>
                           <button
                             className="dropdown-item"
-                            onClick={() => handleActionChange(index, "delete")}
+                            // onClick={}
                           >
                             <AiOutlineDelete /> Delete
                           </button>
@@ -283,9 +230,9 @@ function MainQuototation() {
                         <li>
                           <button
                             className="dropdown-item"
-                            onClick={() => handleActionChange(index, "email")}
+                            // onClick={}
                           >
-                            <AiOutlineMail /> Email
+                            <AiOutlineMail /> Envoyer
                           </button>
                         </li>
                       </ul>
@@ -319,8 +266,9 @@ function MainQuototation() {
                     type="text"
                     id="name"
                     class="form-control"
-                    placeholder="Nom"
+                    placeholder={`${data.Entreprise.denomination}`}
                     required
+                    disabled
                   />
                 </div>
                 <div class="col-md-3">
@@ -353,10 +301,11 @@ function MainQuototation() {
                     type="text"
                     class="form-control"
                     id="adress"
-                    placeholder="1016 Route Kinsevere l'shi"
+                    placeholder={`1016, ${data.Entreprise.Adresse.avenue}, ${data.Entreprise.Adresse.ville}, ${data.Entreprise.Adresse.province}`}
+                    disabled
                   />
                 </div>
-                <div class="col-md-6">
+                {/*  <div class="col-md-6">
                   <label htmlFor="numero">Numéro dc</label>
                   <input
                     id="numero"
@@ -377,21 +326,32 @@ function MainQuototation() {
                     required
                     id="logo"
                   />
-                </div>
-                <div class="col-md-4">
+                </div> */}
+                <div class="col-md-6">
                   <label htmlFor="inputState">Vendeur</label>
                   <select id="inputState" class="form-select">
                     <option selected>Tous</option>
                     <option>...</option>
                   </select>
                 </div>
+                <div className="col-md-12">
+                  <label for="description" htmlFor="inputState">
+                    Description
+                  </label>
+                  <textarea
+                    className="form-control"
+                    placeholder="Entrez la description de la cotation"
+                    id="description"
+                    style={{ height: 100 }}
+                  ></textarea>
+                </div>
 
-                <div class="col-md-4">
-                  <label htmlFor="inputState">Moyen de payement</label>
+                {/* <div class="col-md-12">
+                  <label >Description</label>
                   <select
                     id="inputState"
                     className="form-select"
-                    onChange={handlePaymentOptionChange}
+                    
                   >
                     <option value="indays" selected>
                       Pay in days
@@ -412,7 +372,7 @@ function MainQuototation() {
                     required
                     disabled={paymentOption !== "indays"}
                   />
-                </div>
+                </div> */}
               </form>
 
               <div className="card-body" style={{ marginTop: "40px" }}>
@@ -421,7 +381,7 @@ function MainQuototation() {
                     <tr>
                       <th scope="col">Numéro</th>
                       <th scope="col">Qty</th>
-                      <th scope="col">Description</th>
+                      <th scope="col">Nom du produit</th>
                       <th scope="col">Detail</th>
                       <th scope="col"></th>
                     </tr>
