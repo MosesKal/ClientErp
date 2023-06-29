@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { UilTimes } from "@iconscout/react-unicons";
 import { FiChevronDown } from "react-icons/fi";
 import { AiOutlineEdit, AiOutlineDelete, AiOutlineMail } from "react-icons/ai";
 import "../../../index.css";
 import Swal from "sweetalert2";
 
 const MainCotation = () => {
+  const [selectedDate, setSelectedDate] = useState("");
+
   const [cotations, setCotations] = useState([
     {
       id: 1,
@@ -70,7 +71,7 @@ const MainCotation = () => {
 
   // ============================= Rows =============
   const [rows, setRows] = useState([
-    { id: 1, qty: "", description: "", detail: "", prix: "" },
+    { id: 1, qty: "", description: "", detail: "", prix: "", total: "" },
   ]);
 
   const addRow = () => {
@@ -80,13 +81,20 @@ const MainCotation = () => {
       description: "",
       detail: "",
       prix: "",
+      total: 0, // Initialisez la colonne "total" avec la valeur 0
     };
     setRows([...rows, newRow]);
   };
 
   const handleInputChange = (e, rowId, fieldName) => {
     const updatedRows = rows.map((row) =>
-      row.id === rowId ? { ...row, [fieldName]: e.target.value } : row
+      row.id === rowId
+        ? {
+            ...row,
+            [fieldName]: e.target.value,
+            total: fieldName === "qty" ? e.target.value * row.prix : row.total,
+          }
+        : row
     );
     setRows(updatedRows);
   };
@@ -94,33 +102,6 @@ const MainCotation = () => {
   const removeRow = (rowId) => {
     const updatedRows = rows.filter((row) => row.id !== rowId);
     setRows(updatedRows);
-  };
-  // ============================= Date =============
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [dateError, setDateError] = useState(false);
-
-  const handleStartDateChange = (e) => {
-    setStartDate(e.target.value);
-    validateDates(e.target.value, endDate);
-  };
-  const handleEndDateChange = (e) => {
-    setEndDate(e.target.value);
-    validateDates(startDate, e.target.value);
-  };
-  const validateDates = (start, end) => {
-    if (start && end && start > end) {
-      setDateError(true);
-      // setModalIsOpen(true);
-    } else {
-      setDateError(false);
-    }
-  };
-  // ============================= Payment =============
-  const [paymentOption, setPaymentOption] = useState("indays");
-  const handlePaymentOptionChange = (e) => {
-    const selectedOption = e.target.value;
-    setPaymentOption(selectedOption);
   };
 
   // ============================= Hendlecreate =============
@@ -131,15 +112,13 @@ const MainCotation = () => {
 
     if (
       document.getElementById("name").value === "" ||
-      document.getElementById("start").value === "" ||
-      document.getElementById("end").value === "" ||
+      document.getElementById("date").value === "" ||
       document.getElementById("adress").value === "" ||
       document.getElementById("numero").value === "" ||
       document.getElementById("qty").value === "" ||
-      document.getElementById("desc").value === "" ||
-      document.getElementById("detail").value === ""
+      document.getElementById("desc").value === ""
     ) {
-      alert("Veuillez remplir tous les champs du formulaire.");
+      alert("Veuillez remplir tous les champs du requis.");
       return;
     }
     // Add logic for creating the DC
@@ -149,12 +128,7 @@ const MainCotation = () => {
       alert("Le nom de l'entreprise doit comporter au moins 4 caractères");
       return;
     }
-    const startDate = document.getElementById("start").value;
-    const endDate = document.getElementById("end").value;
-    if (endDate <= startDate) {
-      alert("La date de fin doit être supérieure à la date de début");
-      return;
-    }
+
     const address = document.getElementById("adress").value;
     const addressRegex =
       /^[0-9]+, [a-zA-Z\s]+, [a-zA-Z\s]+, [a-zA-Z\s]+, [a-zA-Z\s]+$/;
@@ -169,31 +143,20 @@ const MainCotation = () => {
       alert("Le numéro de la DC doit comporter 5 caractères alphanumériques");
       return;
     }
-    const paymentOption = document.getElementById("inputState").value;
-    const period = document.getElementById("period").value;
-    const periodRegex = /^[1-9]+$/;
-    if (!periodRegex.test(period)) {
-      alert("La période doit comporter uniquement des caractères de 1 à 9");
-      return;
-    }
+
     const newOffer = {
       name,
-      startDate,
-      endDate,
+      date: selectedDate,
       address,
       dcNumber,
-      paymentOption,
-      period,
     };
 
     setOffer([...offer, newOffer]);
     // Réinitialisez les champs du formulaire après la création de la DC
     document.getElementById("name").value = "";
-    document.getElementById("start").value = "";
-    document.getElementById("end").value = "";
+    document.getElementById("date").value = "";
     document.getElementById("adress").value = "";
     document.getElementById("numero").value = "";
-    document.getElementById("period").value = "";
 
     setPopupOpen(false);
   };
@@ -320,7 +283,7 @@ const MainCotation = () => {
           <div className="row popup-container2 p-3" style={{ width: "700 px" }}>
             <div className="card-body">
               <div className="d-flex justify-content-between mx-3">
-                <h5 class="card-title">Demande de cotation</h5>
+                <h5 class="card-title">Offre </h5>
 
                 <button
                   type="button"
@@ -333,7 +296,7 @@ const MainCotation = () => {
 
               <form class="row g-3 mx-2 needs-validation" noValidate>
                 <div class="col-md-6">
-                  <label htmlFor="name">Nom de l'entreprise</label>
+                  <label htmlFor="name">Nom Vendeur</label>
                   <input
                     type="text"
                     id="name"
@@ -342,31 +305,21 @@ const MainCotation = () => {
                     required
                   />
                 </div>
-                <div class="col-md-3">
-                  <label htmlFor="start">Date de début</label>
-                  <input
-                    type="date"
-                    className={`form-control ${dateError ? "is-invalid" : ""}`}
-                    id="start"
-                    value={startDate}
-                    onChange={handleStartDateChange}
-                    required
-                  />
-                </div>
-                <div class="col-md-3">
-                  <label htmlFor="end">Date de fin</label>
+
+                <div class="col-md-6">
+                  <label htmlFor="date">Date</label>
 
                   <input
                     type="date"
-                    className={`form-control ${dateError ? "is-invalid" : ""}`}
-                    id="end"
-                    value={endDate}
-                    onChange={handleEndDateChange}
+                    className="form-control"
+                    id="date"
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
                     required
                   />
                 </div>
                 <div class="col-6">
-                  <label htmlFor="adress">Adresse Entreprise</label>
+                  <label htmlFor="adress">Adresse Vendeur</label>
                   <input
                     type="text"
                     class="form-control"
@@ -384,50 +337,6 @@ const MainCotation = () => {
                     required
                   />
                 </div>
-                <div class="col-md-2">
-                  <label htmlFor="logo">Logo entreprise</label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    placeholder="Logo"
-                    accept=".png, .jpg"
-                    required
-                    id="logo"
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label htmlFor="inputState">Vendeur</label>
-                  <select id="inputState" class="form-select">
-                    <option selected>Tous</option>
-                    <option>...</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label htmlFor="inputState">Moyen de payement</label>
-                  <select
-                    id="inputState"
-                    className="form-select"
-                    onChange={handlePaymentOptionChange}
-                  >
-                    <option value="indays" selected>
-                      Pay in days
-                    </option>
-                    <option value="cod">COD</option>
-                  </select>
-                </div>
-                <div class="col-md-2">
-                  <label htmlFor="period">Durée</label>
-                  <input
-                    id="period"
-                    type="text"
-                    className={`form-control period-number ${
-                      paymentOption !== "indays" ? "disabled" : ""
-                    }`}
-                    placeholder="0"
-                    required
-                    disabled={paymentOption !== "indays"}
-                  />
-                </div>
               </form>
 
               <div className="card-body" style={{ marginTop: "40px" }}>
@@ -439,22 +348,22 @@ const MainCotation = () => {
                       <th scope="col">Description</th>
                       <th scope="col">Detail</th>
                       <th scope="col">Prix</th>
+                      <th scope="col">Total</th>
                       <th scope="col"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    {rows.map((row, index) => (
+                    {rows.map((row) => (
                       <tr key={row.id}>
-                        <td>{index + 1}</td>
+                        <th scope="row">#{row.id}</th>
                         <td>
                           <input
-                            type="number"
-                            className="form-control input-tab border border-secondary-subtle"
-                            id="qty"
+                            type="text"
                             value={row.qty}
                             onChange={(e) =>
                               handleInputChange(e, row.id, "qty")
                             }
+                            className="form-control"
                           />
                         </td>
                         <td>
@@ -483,28 +392,34 @@ const MainCotation = () => {
                         <td>
                           <input
                             type="text"
-                            className="form-control input-tab border border-secondary-subtle"
-                            id="prix"
                             value={row.prix}
                             onChange={(e) =>
                               handleInputChange(e, row.id, "prix")
                             }
+                            className="form-control"
                           />
                         </td>
+                        <td>{row.qty * row.prix}</td>
                         <td>
-                          <UilTimes onClick={() => removeRow(row.id)} />
+                          <button
+                            className="btn btn-danger btn-sm"
+                            onClick={() => removeRow(row.id)}
+                          >
+                            Supprimer
+                          </button>
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
+
                 <span className="btn-primary mt-2 add-item" onClick={addRow}>
                   + Add item
                 </span>
                 <div className="text-end mt-5 mb-3">
                   <button
                     id="inputState"
-                    class="btn btn-success"
+                    class="btn btn-primary"
                     onClick={handleCreate}
                   >
                     Créer une DC

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const MainAdmin = () => {
   return (
     <main id="main" className="main">
@@ -8,7 +8,7 @@ const MainAdmin = () => {
         <nav>
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="index.html">Home</a>
+              <Link to="index.html">Home</Link>
             </li>
             <li className="breadcrumb-item active">Dashboard</li>
           </ol>
@@ -20,37 +20,37 @@ const MainAdmin = () => {
           <div className="col-lg-8">
             <div className="row">
               <div className="col-xxl-4 col-md-6">
-                <div className="card info-card sales-card">
+                <div className="card info-card customers-card">
                   <div className="filter">
-                    <a className="icon" href="#" data-bs-toggle="dropdown">
+                    <Link className="icon" to="#" data-bs-toggle="dropdown">
                       <i className="bi bi-three-dots"></i>
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                       <li className="dropdown-header text-start">
                         <h6>Filter</h6>
                       </li>
 
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           Today
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           This Month
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           This Year
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
 
                   <div className="card-body">
                     <h5 className="card-title">
-                      Sales <span>| Today</span>
+                      Entreprises <span>| Today</span>
                     </h5>
 
                     <div className="d-flex align-items-center">
@@ -58,12 +58,12 @@ const MainAdmin = () => {
                         <i className="bi bi-cart"></i>
                       </div>
                       <div className="ps-3">
-                        <h6>145</h6>
+                        <h6>1</h6>
                         <span className="text-success small pt-1 fw-bold">
-                          12%
+                          1%
                         </span>{" "}
                         <span className="text-muted small pt-2 ps-1">
-                          increase
+                          Augmantation
                         </span>
                       </div>
                     </div>
@@ -73,35 +73,35 @@ const MainAdmin = () => {
               <div className="col-xxl-4 col-md-6">
                 <div className="card info-card revenue-card">
                   <div className="filter">
-                    <a className="icon" href="#" data-bs-toggle="dropdown">
+                    <Link className="icon" to="#" data-bs-toggle="dropdown">
                       <i className="bi bi-three-dots"></i>
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                       <li className="dropdown-header text-start">
                         <h6>Filter</h6>
                       </li>
 
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           Today
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           This Month
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           This Year
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
 
                   <div className="card-body">
                     <h5 className="card-title">
-                      Revenue <span>| This Month</span>
+                      Produits <span>| This Month</span>
                     </h5>
 
                     <div className="d-flex align-items-center">
@@ -109,12 +109,12 @@ const MainAdmin = () => {
                         <i className="bi bi-currency-dollar"></i>
                       </div>
                       <div className="ps-3">
-                        <h6>$3,264</h6>
+                        <h6>64</h6>
                         <span className="text-success small pt-1 fw-bold">
-                          8%
+                          18%
                         </span>{" "}
                         <span className="text-muted small pt-2 ps-1">
-                          increase
+                          Augmentation
                         </span>
                       </div>
                     </div>
@@ -124,35 +124,35 @@ const MainAdmin = () => {
               <div className="col-xxl-4 col-xl-12">
                 <div className="card info-card customers-card">
                   <div className="filter">
-                    <a className="icon" href="#" data-bs-toggle="dropdown">
+                    <Link className="icon" to="#" data-bs-toggle="dropdown">
                       <i className="bi bi-three-dots"></i>
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                       <li className="dropdown-header text-start">
                         <h6>Filter</h6>
                       </li>
 
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           Today
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           This Month
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           This Year
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
 
                   <div className="card-body">
                     <h5 className="card-title">
-                      Customers <span>| This Year</span>
+                      Vendeurs <span>| This Year</span>
                     </h5>
 
                     <div className="d-flex align-items-center">
@@ -175,28 +175,28 @@ const MainAdmin = () => {
               <div className="col-12">
                 <div className="card">
                   <div className="filter">
-                    <a className="icon" href="#" data-bs-toggle="dropdown">
+                    <Link className="icon" to="#" data-bs-toggle="dropdown">
                       <i className="bi bi-three-dots"></i>
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                       <li className="dropdown-header text-start">
                         <h6>Filter</h6>
                       </li>
 
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           Today
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           This Month
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           This Year
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -213,28 +213,28 @@ const MainAdmin = () => {
               <div className="col-12">
                 <div className="card recent-sales overflow-auto">
                   <div className="filter">
-                    <a className="icon" href="#" data-bs-toggle="dropdown">
+                    <Link className="icon" to="#" data-bs-toggle="dropdown">
                       <i className="bi bi-three-dots"></i>
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                       <li className="dropdown-header text-start">
                         <h6>Filter</h6>
                       </li>
 
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           Today
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           This Month
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           This Year
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -257,13 +257,13 @@ const MainAdmin = () => {
                       <tbody>
                         <tr>
                           <th scope="row">
-                            <a href="#">#2457</a>
+                            <Link to="#">#2457</Link>
                           </th>
                           <td>Brandon Jacob</td>
                           <td>
-                            <a href="#" className="text-primary">
+                            <Link to="#" className="text-primary">
                               At praesentium minu
-                            </a>
+                            </Link>
                           </td>
                           <td>$64</td>
                           <td>
@@ -272,13 +272,13 @@ const MainAdmin = () => {
                         </tr>
                         <tr>
                           <th scope="row">
-                            <a href="#">#2147</a>
+                            <Link to="#">#2147</Link>
                           </th>
                           <td>Bridie Kessler</td>
                           <td>
-                            <a href="#" className="text-primary">
+                            <Link to="#" className="text-primary">
                               Blanditiis dolor omnis similique
-                            </a>
+                            </Link>
                           </td>
                           <td>$47</td>
                           <td>
@@ -287,13 +287,13 @@ const MainAdmin = () => {
                         </tr>
                         <tr>
                           <th scope="row">
-                            <a href="#">#2049</a>
+                            <Link to="#">#2049</Link>
                           </th>
                           <td>Ashleigh Langosh</td>
                           <td>
-                            <a href="#" className="text-primary">
+                            <Link to="#" className="text-primary">
                               At recusandae consectetur
-                            </a>
+                            </Link>
                           </td>
                           <td>$147</td>
                           <td>
@@ -302,13 +302,13 @@ const MainAdmin = () => {
                         </tr>
                         <tr>
                           <th scope="row">
-                            <a href="#">#2644</a>
+                            <Link to="#">#2644</Link>
                           </th>
                           <td>Angus Grady</td>
                           <td>
-                            <a href="#" className="text-primar">
+                            <Link to="#" className="text-primar">
                               Ut voluptatem id earum et
-                            </a>
+                            </Link>
                           </td>
                           <td>$67</td>
                           <td>
@@ -317,13 +317,13 @@ const MainAdmin = () => {
                         </tr>
                         <tr>
                           <th scope="row">
-                            <a href="#">#2644</a>
+                            <Link to="#">#2644</Link>
                           </th>
                           <td>Raheem Lehner</td>
                           <td>
-                            <a href="#" className="text-primary">
+                            <Link to="#" className="text-primary">
                               Sunt similique distinctio
-                            </a>
+                            </Link>
                           </td>
                           <td>$165</td>
                           <td>
@@ -338,28 +338,28 @@ const MainAdmin = () => {
               <div className="col-12">
                 <div className="card top-selling overflow-auto">
                   <div className="filter">
-                    <a className="icon" href="#" data-bs-toggle="dropdown">
+                    <Link className="icon" to="#" data-bs-toggle="dropdown">
                       <i className="bi bi-three-dots"></i>
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                       <li className="dropdown-header text-start">
                         <h6>Filter</h6>
                       </li>
 
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           Today
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           This Month
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="#">
                           This Year
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -382,14 +382,14 @@ const MainAdmin = () => {
                       <tbody>
                         <tr>
                           <th scope="row">
-                            <a href="#">
+                            <Link to="#">
                               <img src="assets/img/product-1.jpg" alt="" />
-                            </a>
+                            </Link>
                           </th>
                           <td>
-                            <a href="#" className="text-primary fw-bold">
+                            <Link to="#" className="text-primary fw-bold">
                               Ut inventore ipsa voluptas nulla
-                            </a>
+                            </Link>
                           </td>
                           <td>$64</td>
                           <td className="fw-bold">124</td>
@@ -397,14 +397,14 @@ const MainAdmin = () => {
                         </tr>
                         <tr>
                           <th scope="row">
-                            <a href="#">
+                            <Link to="#">
                               <img src="assets/img/product-2.jpg" alt="" />
-                            </a>
+                            </Link>
                           </th>
                           <td>
-                            <a href="#" className="text-primary fw-bold">
+                            <Link to="#" className="text-primary fw-bold">
                               Exercitationem similique doloremque
-                            </a>
+                            </Link>
                           </td>
                           <td>$46</td>
                           <td className="fw-bold">98</td>
@@ -412,14 +412,14 @@ const MainAdmin = () => {
                         </tr>
                         <tr>
                           <th scope="row">
-                            <a href="#">
+                            <Link to="#">
                               <img src="assets/img/product-3.jpg" alt="" />
-                            </a>
+                            </Link>
                           </th>
                           <td>
-                            <a href="#" className="text-primary fw-bold">
+                            <Link to="#" className="text-primary fw-bold">
                               Doloribus nisi exercitationem
-                            </a>
+                            </Link>
                           </td>
                           <td>$59</td>
                           <td className="fw-bold">74</td>
@@ -427,14 +427,14 @@ const MainAdmin = () => {
                         </tr>
                         <tr>
                           <th scope="row">
-                            <a href="#">
+                            <Link to="#">
                               <img src="assets/img/product-4.jpg" alt="" />
-                            </a>
+                            </Link>
                           </th>
                           <td>
-                            <a href="#" className="text-primary fw-bold">
+                            <Link to="#" className="text-primary fw-bold">
                               Officiis quaerat sint rerum error
-                            </a>
+                            </Link>
                           </td>
                           <td>$32</td>
                           <td className="fw-bold">63</td>
@@ -442,14 +442,14 @@ const MainAdmin = () => {
                         </tr>
                         <tr>
                           <th scope="row">
-                            <a href="#">
+                            <Link to="#">
                               <img src="assets/img/product-5.jpg" alt="" />
-                            </a>
+                            </Link>
                           </th>
                           <td>
-                            <a href="#" className="text-primary fw-bold">
+                            <Link to="#" className="text-primary fw-bold">
                               Sit unde debitis delectus repellendus
-                            </a>
+                            </Link>
                           </td>
                           <td>$79</td>
                           <td className="fw-bold">41</td>
@@ -465,28 +465,28 @@ const MainAdmin = () => {
           <div className="col-lg-4">
             <div className="card">
               <div className="filter">
-                <a className="icon" href="#" data-bs-toggle="dropdown">
+                <Link className="icon" to="#" data-bs-toggle="dropdown">
                   <i className="bi bi-three-dots"></i>
-                </a>
+                </Link>
                 <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                   <li className="dropdown-header text-start">
                     <h6>Filter</h6>
                   </li>
 
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="#">
                       Today
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="#">
                       This Month
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="#">
                       This Year
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -502,9 +502,9 @@ const MainAdmin = () => {
                     <i className="bi bi-circle-fill activity-badge text-success align-self-start"></i>
                     <div className="activity-content">
                       Quia quae rerum{" "}
-                      <a href="#" className="fw-bold text-dark">
+                      <Link to="#" className="fw-bold text-dark">
                         explicabo officiis
-                      </a>{" "}
+                      </Link>{" "}
                       beatae
                     </div>
                   </div>
@@ -530,9 +530,9 @@ const MainAdmin = () => {
                     <i className="bi bi-circle-fill activity-badge text-info align-self-start"></i>
                     <div className="activity-content">
                       Tempore autem saepe{" "}
-                      <a href="#" className="fw-bold text-dark">
+                      <Link to="#" className="fw-bold text-dark">
                         occaecati voluptatem
-                      </a>{" "}
+                      </Link>{" "}
                       tempore
                     </div>
                   </div>

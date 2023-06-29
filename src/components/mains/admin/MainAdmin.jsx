@@ -54,20 +54,20 @@ const MainAdmin = () => {
 
                   <div className="card-body">
                     <h5 className="card-title">
-                      Ventes <span>| Aujourdui</span>
+                      Commande <span>| Aujourdui</span>
                     </h5>
 
                     <div className="d-flex align-items-center">
                       <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i className="bi bi-cart"></i>
+                        <i className="bi bi-archive-fill"></i>
                       </div>
                       <div className="ps-3">
-                        <h6>145</h6>
+                        <h6>0</h6>
                         <span className="text-success small pt-1 fw-bold">
-                          12%
+                          0%
                         </span>
                         <span className="text-muted small pt-2 ps-1">
-                          Croissance
+                          Decroissance
                         </span>
                       </div>
                     </div>
@@ -78,7 +78,7 @@ const MainAdmin = () => {
               {/* Revenue Card */}
 
               <div className="col-xxl-4 col-md-6">
-                <div className="card info-card revenue-card">
+                <div className="card info-card customers-card">
                   <div className="filter">
                     <Link to="#" className="icon" data-bs-toggle="dropdown">
                       <i className="bi bi-three-dots"></i>
@@ -107,20 +107,20 @@ const MainAdmin = () => {
 
                   <div className="card-body">
                     <h5 className="card-title">
-                      Revenue <span>| Ce Mois</span>
+                      Entreprises <span>| Ce Mois</span>
                     </h5>
 
                     <div className="d-flex align-items-center">
                       <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i className="bi bi-currency-dollar"></i>
+                        <i className="bi bi-bag-check-fill"></i>
                       </div>
                       <div className="ps-3">
-                        <h6>$3,264</h6>
+                        <h6>Aucune</h6>
                         <span className="text-success small pt-1 fw-bold">
-                          8%
+                          0%
                         </span>
                         <span className="text-muted small pt-2 ps-1">
-                          Croissance
+                          Augmentation
                         </span>
                       </div>
                     </div>
@@ -170,9 +170,9 @@ const MainAdmin = () => {
                         <i className="bi bi-people"></i>
                       </div>
                       <div className="ps-3">
-                        <h6>1244</h6>
+                        <h6>1</h6>
                         <span className="text-danger small pt-1 fw-bold">
-                          12%
+                          0%
                         </span>
                         <span className="text-muted small pt-2 ps-1">
                           Decroissance
@@ -477,11 +477,9 @@ const MainAdmin = () => {
                     <div class="activite-label">32 min</div>
                     <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
                     <div class="activity-content">
-                      Quia quae rerum
-                      <Link to="#" class="fw-bold text-dark">
-                        explicabo officiis
+                      <Link to="#" class="text-dark">
+                        L'entreprise KAMOA a envoyé une demande de cotation
                       </Link>
-                      beatae
                     </div>
                   </div>
                   {/* End activity item */}
@@ -489,7 +487,7 @@ const MainAdmin = () => {
                     <div class="activite-label">56 min</div>
                     <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
                     <div class="activity-content">
-                      Voluptatem blanditiis blanditiis eveniet
+                      Un utilisteur tente de créer un compte
                     </div>
                   </div>
                   {/* End activity item */}
@@ -498,7 +496,7 @@ const MainAdmin = () => {
                     <div class="activite-label">2 hrs</div>
                     <i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
                     <div class="activity-content">
-                      Voluptates corrupti molestias voluptatem
+                      Vous avez créé 3 entreprises
                     </div>
                   </div>
                   {/* End activity item */}
@@ -506,9 +504,8 @@ const MainAdmin = () => {
                     <div class="activite-label">1 day</div>
                     <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
                     <div class="activity-content">
-                      Tempore autem saepe
-                      <Link to="#" class="fw-bold text-dark">
-                        occaecati voluptatem
+                      <Link to="#" class="text-dark">
+                        Vous avez ajouté 10 produits
                       </Link>
                       tempore
                     </div>
@@ -519,16 +516,7 @@ const MainAdmin = () => {
                     <div class="activite-label">2 days</div>
                     <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
                     <div class="activity-content">
-                      Est sit eum reiciendis exercitationem
-                    </div>
-                  </div>
-                  {/* End activity item */}
-
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">4 weeks</div>
-                    <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
-                    <div class="activity-content">
-                      Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
+                      Vous avez 10 Notifications
                     </div>
                   </div>
                   {/* End activity item */}
@@ -716,19 +704,6 @@ const MainAdmin = () => {
           {/* End Right side columns */}
         </div>
       </section>
-      <footer id="footer" class="footer">
-        <div class="copyright">
-          &copy; Copyright{" "}
-          <strong>
-            <span>Small-erp</span>
-          </strong>
-          . All Rights Reserved
-        </div>
-        <div class="credits">
-          Designed by{" "}
-          <Link to="https://kadea.academy/">Lubumbashi Digital Academy</Link>
-        </div>
-      </footer>
     </main>
   );
 };

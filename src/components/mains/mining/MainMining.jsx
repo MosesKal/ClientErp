@@ -54,20 +54,20 @@ const MainMining = () => {
 
                   <div className="card-body">
                     <h5 className="card-title">
-                      Ventes <span>| Aujourdui</span>
+                      Commandes <span>| Aujourdui</span>
                     </h5>
 
                     <div className="d-flex align-items-center">
                       <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i className="bi bi-cart"></i>
+                        <i className="bi bi-archive-fill"></i>
                       </div>
                       <div className="ps-3">
-                        <h6>145</h6>
+                        <h6>0</h6>
                         <span className="text-success small pt-1 fw-bold">
-                          12%
+                          0%
                         </span>
                         <span className="text-muted small pt-2 ps-1">
-                          Croissance
+                          Decroissance
                         </span>
                       </div>
                     </div>
@@ -78,7 +78,7 @@ const MainMining = () => {
               {/* Revenue Card */}
 
               <div className="col-xxl-4 col-md-6">
-                <div className="card info-card revenue-card">
+                <div className="card info-card sales-card">
                   <div className="filter">
                     <Link to="#" className="icon" data-bs-toggle="dropdown">
                       <i className="bi bi-three-dots"></i>
@@ -107,7 +107,7 @@ const MainMining = () => {
 
                   <div className="card-body">
                     <h5 className="card-title">
-                      Revenue <span>| Ce Mois</span>
+                      Cotation <span>| Ce mois</span>
                     </h5>
 
                     <div className="d-flex align-items-center">
@@ -115,7 +115,7 @@ const MainMining = () => {
                         <i className="bi bi-currency-dollar"></i>
                       </div>
                       <div className="ps-3">
-                        <h6>$3,264</h6>
+                        <h6>10</h6>
                         <span className="text-success small pt-1 fw-bold">
                           8%
                         </span>
@@ -170,12 +170,12 @@ const MainMining = () => {
                         <i className="bi bi-people"></i>
                       </div>
                       <div className="ps-3">
-                        <h6>1244</h6>
+                        <h6>50</h6>
                         <span className="text-danger small pt-1 fw-bold">
-                          12%
+                          52%
                         </span>
                         <span className="text-muted small pt-2 ps-1">
-                          Decroissance
+                          croissance
                         </span>
                       </div>
                     </div>
@@ -547,21 +547,21 @@ const MainMining = () => {
                 </Link>
                 <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                   <li className="dropdown-header text-start">
-                    <h6>Filter</h6>
+                    <h6>Filtrer</h6>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="#">
-                      Today
+                      Aujourd'hui
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="#">
-                      This Month
+                      Ce mois
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="#">
-                      This Year
+                      Cette Année
                     </Link>
                   </li>
                 </ul>
@@ -646,7 +646,7 @@ const MainMining = () => {
                     <img src="assets/img/news-1.jpg" alt="" />
                     <h4>
                       <Link to="#">
-                        Kadea a produit plus des logiels pour les Miniers
+                        L'entre prise KAMOA a été créé avec succès
                       </Link>
                     </h4>
                     <p>
@@ -716,19 +716,6 @@ const MainMining = () => {
           {/* End Right side columns */}
         </div>
       </section>
-      <footer id="footer" class="footer">
-        <div class="copyright">
-          &copy; Copyright{" "}
-          <strong>
-            <span>Small-erp</span>
-          </strong>
-          . All Rights Reserved
-        </div>
-        <div class="credits">
-          Designed by{" "}
-          <Link to="https://kadea.academy/">Lubumbashi Digital Academy</Link>
-        </div>
-      </footer>
     </main>
   );
 };
