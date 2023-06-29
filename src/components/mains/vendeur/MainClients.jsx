@@ -9,6 +9,15 @@ const columns = [
   { field: "id", headerName: "ID", width: 120 },
   { field: "firstName", headerName: "First Name", width: 160 },
   { field: "lastName", headerName: "Last Name", width: 160 },
+  {
+    field: "fullName",
+    headerName: "Full name",
+    description: "This column has a value getter and is not sortable.",
+    sortable: false,
+    width: 160,
+    valueGetter: (params) =>
+      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+  },
   { field: "adresse", headerName: "Adresse", width: 260 },
   { field: "phone", headerName: "Phone", width: 220 },
   { field: "email", headerName: "Email", width: 230 },
@@ -81,8 +90,10 @@ const handleDelete = (params) => {
 };
 
 function MainClients() {
-  const [fullName, setFullName] = useState("");
-  const [fullNameError, setFullNameError] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [phone, setPhone] = useState("");
@@ -99,14 +110,26 @@ function MainClients() {
       setEmailError("");
     }
   };
-  const handleFullNameChange = (event) => {
+
+  const handleFistNameChange = (event) => {
     const value = event.target.value;
-    setFullName(value);
+    setFirstName(value);
 
     if (value.length < 4) {
-      setFullNameError("Le nom doit avoir au moins 4 caractères.");
+      setFirstNameError("Le Prenom doit avoir au moins 3 caractères.");
     } else {
-      setFullNameError("");
+      setFirstNameError("");
+    }
+  };
+
+  const handleLastNameChange = (event) => {
+    const value = event.target.value;
+    setLastName(value);
+
+    if (value.length < 4) {
+      setLastNameError("Le nom doit avoir au moins 4 caractères.");
+    } else {
+      setLastNameError("");
     }
   };
 
@@ -124,9 +147,13 @@ function MainClients() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (firstName.length < 3) {
+      setFirstNameError("Le Prénom doit avoir au moins 3 caractères.");
+      return;
+    }
 
-    if (fullName.length < 4) {
-      setFullNameError("Le nom doit avoir au moins 4 caractères.");
+    if (lastName.length < 4) {
+      setLastNameError("Le nom doit avoir au moins 4 caractères.");
       return;
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -205,24 +232,47 @@ function MainClients() {
               <form className="frofile-form">
                 <div class="row mb-3">
                   <label
-                    for="fullName"
+                    for="firstName"
                     class="col-md-4 col-lg-3 col-form-label"
                   >
-                    Full Name
+                    Fist Name
                   </label>
                   <div class="col-md-8 col-lg-9">
                     <input
-                      name="fullName"
+                      name="firstName"
                       type="text"
                       className="form-control"
-                      id="fullName"
-                      placeholder="Baki kyungu"
-                      value={fullName}
-                      onChange={handleFullNameChange}
+                      id="firstName"
+                      placeholder="baki"
+                      value={firstName}
+                      onChange={handleFistNameChange}
                       required
                     />
-                    {fullNameError && (
-                      <div className="text-danger">{fullNameError}</div>
+                    {firstNameError && (
+                      <div className="text-danger">{firstNameError}</div>
+                    )}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label
+                    for="lastName"
+                    class="col-md-4 col-lg-3 col-form-label"
+                  >
+                    Last Name
+                  </label>
+                  <div class="col-md-8 col-lg-9">
+                    <input
+                      name="lastName"
+                      type="text"
+                      className="form-control"
+                      id="lastName"
+                      placeholder="kyungu"
+                      value={lastName}
+                      onChange={handleLastNameChange}
+                      required
+                    />
+                    {lastNameError && (
+                      <div className="text-danger">{lastNameError}</div>
                     )}
                   </div>
                 </div>

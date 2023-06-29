@@ -162,7 +162,7 @@ const MainSeller = () => {
 
                   <div className="card-body">
                     <h5 className="card-title">
-                      Vendeurs <span>| Cette Année</span>
+                      Clients <span>| Cette Année</span>
                     </h5>
 
                     <div className="d-flex align-items-center">
@@ -228,7 +228,7 @@ const MainSeller = () => {
                       <thead>
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">Vendeur</th>
+                          <th scope="col">Entreprises</th>
                           <th scope="col">Product</th>
                           <th scope="col">Price</th>
                           <th scope="col">Status</th>
@@ -237,20 +237,20 @@ const MainSeller = () => {
                       <tbody>
                         <tr>
                           <th scope="row">#2457</th>
-                          <td>Brandon Jacob</td>
+                          <td>MuMI</td>
                           <td>
                             <Link to="/Cette annéé" className="text-primary">
-                              At praesentium minu
+                              Groupe electrogèe
                             </Link>
                           </td>
                           <td>$64</td>
                           <td>
-                            <span class="badge bg-success">Approved</span>
+                            <span class="badge bg-success">approuvé</span>
                           </td>
                         </tr>
                         <tr>
                           <th scope="row">#2147</th>
-                          <td>Bridie Kessler</td>
+                          <td>KCC</td>
                           <td>
                             <Link to="" className="text-primary">
                               Boots
@@ -258,12 +258,12 @@ const MainSeller = () => {
                           </td>
                           <td>$47</td>
                           <td>
-                            <span class="badge bg-warning">Pending</span>
+                            <span class="badge bg-warning">en attente</span>
                           </td>
                         </tr>
                         <tr>
                           <th scope="row">#2049</th>
-                          <td>Ashleigh Langosh</td>
+                          <td>TENKE FUNGURUME</td>
                           <td>
                             <Link to="/" className="text-primary">
                               Chou
@@ -271,7 +271,7 @@ const MainSeller = () => {
                           </td>
                           <td>$147</td>
                           <td>
-                            <span class="badge bg-success">Approved</span>
+                            <span class="badge bg-success">Approuvée</span>
                           </td>
                         </tr>
                         <tr>
@@ -284,12 +284,12 @@ const MainSeller = () => {
                           </td>
                           <td>$2000</td>
                           <td>
-                            <span class="badge bg-danger">Rejected</span>
+                            <span class="badge bg-danger">Rejetée</span>
                           </td>
                         </tr>
                         <tr>
                           <th scope="row">#2644</th>
-                          <td>Aimé nzolo</td>
+                          <td>KAMOA</td>
                           <td>
                             <Link to="/" className="text-primary">
                               Ordinateurs
@@ -297,7 +297,7 @@ const MainSeller = () => {
                           </td>
                           <td>$165</td>
                           <td>
-                            <span class="badge bg-success">Approved</span>
+                            <span class="badge bg-success">approuvé</span>
                           </td>
                         </tr>
                       </tbody>
@@ -477,8 +477,8 @@ const MainSeller = () => {
                     <div class="activite-label">32 min</div>
                     <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
                     <div class="activity-content">
-                      <Link to="#" class="fw-bold text-dark">
-                        Ofre Envoyée avec sussès
+                      <Link to="#" class="text-dark">
+                        Votre Ofre a été Envoyée avec sussès
                       </Link>
                     </div>
                   </div>
@@ -487,7 +487,9 @@ const MainSeller = () => {
                     <div class="activite-label">56 min</div>
                     <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
                     <div class="activity-content">
-                      Voluptatem blanditiis blanditiis eveniet
+                      <Link to="#" class="text-dark">
+                        Votre Offre a été Rejetée
+                      </Link>
                     </div>
                   </div>
                   {/* End activity item */}
@@ -496,7 +498,9 @@ const MainSeller = () => {
                     <div class="activite-label">2 hrs</div>
                     <i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
                     <div class="activity-content">
-                      Voluptates corrupti molestias voluptatem
+                      <Link to="#" class="text-dark">
+                        Vous avez ajouté un nouveau client
+                      </Link>
                     </div>
                   </div>
                   {/* End activity item */}
@@ -504,11 +508,9 @@ const MainSeller = () => {
                     <div class="activite-label">1 day</div>
                     <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
                     <div class="activity-content">
-                      Tempore autem saepe
-                      <Link to="#" class="fw-bold text-dark">
-                        occaecati voluptatem
+                      <Link to="#" class="text-dark">
+                        Vous avez une nouvelle demande de cotation
                       </Link>
-                      tempore
                     </div>
                   </div>
                   {/* End activity item */}
@@ -517,7 +519,9 @@ const MainSeller = () => {
                     <div class="activite-label">2 days</div>
                     <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
                     <div class="activity-content">
-                      Est sit eum reiciendis exercitationem
+                      <Link to="#" class="text-dark">
+                        Votre Offre a été selectionnée
+                      </Link>
                     </div>
                   </div>
                   {/* End activity item */}
@@ -526,7 +530,9 @@ const MainSeller = () => {
                     <div class="activite-label">4 weeks</div>
                     <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
                     <div class="activity-content">
-                      Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
+                      <Link to="#" class="text-dark">
+                        Un nouveau Produit a été ajouté
+                      </Link>
                     </div>
                   </div>
                   {/* End activity item */}
@@ -671,37 +677,27 @@ const MainSeller = () => {
                   <div className="post-item clearfix">
                     <img src="assets/img/news-3.jpg" alt="" />
                     <h4>
-                      <Link to="#">
-                        Id quia et et ut maxime similique occaecati ut
-                      </Link>
+                      <Link to="#">Fonctionnalité de chat</Link>
                     </h4>
                     <p>
-                      Fugiat voluptas vero eaque accusantium eos. Consequuntur
-                      sed ipsam et totam...
+                      Desormais, vous pouvez envoyez vos difficultés à
+                      l'aidministrateur...
                     </p>
                   </div>
 
                   <div className="post-item clearfix">
                     <img src="assets/img/news-4.jpg" alt="" />
                     <h4>
-                      <Link to="#">Laborum corporis quo dara net para</Link>
+                      <Link to="#">Recompenses </Link>
                     </h4>
                     <p>
-                      Qui enim quia optio. Eligendi aut asperiores enim
-                      repellendusvel rerum cuder...
-                    </p>
-                  </div>
-
-                  <div className="post-item clearfix">
-                    <img src="assets/img/news-5.jpg" alt="" />
-                    <h4>
-                      <Link to="#">
-                        Et dolores corrupti quae illo quod dolor
-                      </Link>
-                    </h4>
-                    <p>
-                      Odit ut eveniet modi reiciendis. Atque cupiditate libero
-                      beatae dignissimos eius...
+                      KAMOA récompensera le 20 juillet 2023 les 3 meilleurs
+                      vendeurs locaux qui ont généré le plus de revenus au cours
+                      des deux dernières années. Cette récompense sera publiée
+                      sur notre plateforme small-erp. Nous souhaitons
+                      reconnaître et récompenser les efforts exceptionnels de
+                      ces vendeurs qui ont contribué de manière significative à
+                      la croissance de leur entreprise.
                     </p>
                   </div>
                 </div>

@@ -7,7 +7,7 @@ const BudgetChart = () => {
 
     const options = {
       legend: {
-        data: ["Allocated Budget", "Actual Spending"],
+        data: ["budget alloué", "dépenses réelles"],
       },
       radar: {
         indicator: [
