@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../../header/Header";
 import useAuth from "../../../hooks/useAuth";
-// import axios from "axios";
 import SideBarVendeur from "../../sideBars/SideBarVendeur";
 import MainClients from "../../mains/vendeur/MainClients";
 

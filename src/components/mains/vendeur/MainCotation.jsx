@@ -422,7 +422,7 @@ const MainCotation = () => {
                     class="btn btn-primary"
                     onClick={handleCreate}
                   >
-                    Créer une DC
+                    Envoyer l'offre
                   </button>
                   <button
                     type="button"

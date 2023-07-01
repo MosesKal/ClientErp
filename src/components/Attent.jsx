@@ -7,8 +7,8 @@ const Attent = () => {
     <main>
       <div class="container">
         <section class="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
-          <h1 className="mt-3">404</h1>
-          <h2>Page d'attente</h2>
+          <h1 className="mt-3">Page d'attente</h1>
+          <h2 className="mt-5">Votre compte doit être valider pour pouvoir vous connectez</h2>
 
           <div className="card-body">
             <div className="d-flex justify-content-between mx-3 mt-5">

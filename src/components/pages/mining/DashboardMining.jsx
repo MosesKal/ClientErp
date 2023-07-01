@@ -5,7 +5,6 @@ import SideBarMining from "../../sideBars/SideBarMining";
 import MainMining from "../../mains/mining/MainMining";
 import useAuth from "../../../hooks/useAuth";
 
-
 const DashboardMining = () => {
   const { auth, dataMining, setDataMining } = useAuth();
 
@@ -13,14 +12,13 @@ const DashboardMining = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`/getDataMining/${auth.accessToken}`);
-        setDataMining(response?.data?.userData)
+        setDataMining(response?.data?.userData);
       } catch (error) {
         console.log("Une erreur s'est produite");
       }
     };
     fetchData();
   }, []);
-
 
   return (
     <div>

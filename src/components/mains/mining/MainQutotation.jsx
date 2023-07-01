@@ -3,8 +3,11 @@ import moment from "moment";
 import { UilTimes } from "@iconscout/react-unicons";
 import { FiChevronDown } from "react-icons/fi";
 import { AiOutlineEdit, AiOutlineDelete, AiOutlineMail } from "react-icons/ai";
+import axios from "../../api/axios";
 import Swal from "sweetalert2";
 import "../../../index.css";
+
+const COTATION_URL = "/createCotation";
 
 function MainQuototation({ data }) {
   const [status, setStatus] = useState("open");
@@ -18,6 +21,10 @@ function MainQuototation({ data }) {
   const addRow = () => {
     const newRow = { id: Date.now(), qty: "", description: "", detail: "" };
     setRows([...rows, newRow]);
+    const addRow = () => {
+      const newRow = { id: Date.now(), qty: "", description: "", detail: "" };
+      setRows([...rows, newRow]);
+    };
   };
 
   const handleInputChange = (e, rowId, fieldName) => {
@@ -104,49 +111,56 @@ function MainQuototation({ data }) {
     }
   };
 
-  // const handleSend = (quotationIndex, action) => {
-  //   if (action === "delete") {
-  //     // Show confirmation popup
-  //     const swalWithBootstrapButtons = Swal.mixin({
-  //       customClass: {
-  //         confirmButton: "btn btn-success",
-  //         cancelButton: "btn btn-danger",
-  //       },
-  //       buttonsStyling: false,
-  //     });
+  const handleActionChange = (quotationIndex, action) => {
+    if (action === "delete") {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger",
+        },
+        buttonsStyling: false,
+      });
 
-  //     swalWithBootstrapButtons
-  //       .fire({
-  //         title: "Ête1001s-vous sûr(e) ?",
-  //         text: "Êtes-vous sûr(e) de vouloir supprimer cette cotation ?",
-  //         icon: "warning",
-  //         showCancelButton: true,
-  //         confirmButtonText: "Oui, supprimer",
-  //         cancelButtonText: "Non, annuler",
-  //         reverseButtons: true,
-  //       })
-  //       .then((result) => {
-  //         if (result.isConfirmed) {
-  //           const updatedQuotations = [...quotations];
-  //           updatedQuotations.splice(quotationIndex, 1);
-  //           setQuotations(updatedQuotations);
-  //           swalWithBootstrapButtons.fire(
-  //             "Supprimé !",
-  //             "La cotation a été supprimée avec succès.",
-  //             "success"
-  //           );
-  //         } else if (result.dismiss === Swal.DismissReason.cancel) {
-  //           swalWithBootstrapButtons.fire(
-  //             "Annulé",
-  //             "La suppression de la cotation a été annulée.",
-  //             "error"
-  //           );
-  //         }
-  //       });
-  //   } else {
-  //     console.log(`Quotation Index: ${quotationIndex}, Action: ${action}`);
-  //   }
-  // };
+      swalWithBootstrapButtons
+        .fire({
+          title: "Êtes-vous sûr(e) ?",
+          text: "Êtes-vous sûr(e) de vouloir supprimer cette cotation ?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Oui, supprimer",
+          cancelButtonText: "Non, annuler",
+          reverseButtons: true,
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            const updatedQuotations = [...quotations];
+            updatedQuotations.splice(quotationIndex, 1);
+            setQuotations(updatedQuotations);
+            swalWithBootstrapButtons.fire(
+              "Supprimé !",
+              "La cotation a été supprimée avec succès.",
+              "success"
+            );
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire(
+              "Annulé",
+              "La suppression de la cotation a été annulée.",
+              "error"
+            );
+          }
+        });
+    } else if (action === "send") {
+      const quotationToSend = quotations[quotationIndex];
+      axios
+        .post(COTATION_URL, JSON.stringify(quotationToSend))
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  };
 
   return (
     <div className={isPopupOpen ? "overlay" : ""}>
@@ -180,7 +194,7 @@ function MainQuototation({ data }) {
           <table className="table ">
             <thead>
               <tr>
-                <th scope="col">Nom</th>
+                <th scope="col">Description</th>
                 <th scope="col">Date de début</th>
                 <th scope="col">Date de fin</th>
                 <th scope="col">Durée</th>
@@ -195,7 +209,13 @@ function MainQuototation({ data }) {
                   <td>{quotation.startDate}</td>
                   <td>{quotation.endDate}</td>
                   <td>{quotation.duree}</td>
-                  <td>{status === "open" ? "Ouvert" : "Fermé"}</td>
+                  <td>
+                    {status === "open" ? (
+                      <span class="badge bg-secondary">Non envoyée</span>
+                    ) : (
+                      <span class="badge bg-susses">En attente</span>
+                    )}
+                  </td>
                   <td>
                     <div className="dropdown">
                       <button
@@ -214,7 +234,7 @@ function MainQuototation({ data }) {
                         <li>
                           <button
                             className="dropdown-item"
-                            // onClick={() => handleActionChange(index, "edit")}
+                            onClick={() => handleActionChange(index, "edit")}
                           >
                             <AiOutlineEdit /> Edit
                           </button>
@@ -222,7 +242,7 @@ function MainQuototation({ data }) {
                         <li>
                           <button
                             className="dropdown-item"
-                            // onClick={}
+                            onClick={() => handleActionChange(index, "delete")}
                           >
                             <AiOutlineDelete /> Delete
                           </button>
@@ -230,7 +250,7 @@ function MainQuototation({ data }) {
                         <li>
                           <button
                             className="dropdown-item"
-                            // onClick={}
+                            onClick={() => handleActionChange(index, "send")}
                           >
                             <AiOutlineMail /> Envoyer
                           </button>
@@ -297,7 +317,8 @@ function MainQuototation({ data }) {
 
                 <div class="col-6">
                   <label htmlFor="adress">Adresse Entreprise</label>
-                  <input
+                  <inputSafety
+                    shoes
                     type="text"
                     class="form-control"
                     id="adress"
@@ -305,28 +326,7 @@ function MainQuototation({ data }) {
                     disabled
                   />
                 </div>
-                {/*  <div class="col-md-6">
-                  <label htmlFor="numero">Numéro dc</label>
-                  <input
-                    id="numero"
-                    type="text"
-                    class="form-control"
-                    placeholder="1001"
-                    required
-                  />
-                </div>
 
-                <div class="col-md-2">
-                  <label htmlFor="logo">Logo entreprise</label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    placeholder="Logo"
-                    accept=".png, .jpg"
-                    required
-                    id="logo"
-                  />
-                </div> */}
                 <div class="col-md-6">
                   <label htmlFor="inputState">Vendeur</label>
                   <select id="inputState" class="form-select">
@@ -345,34 +345,6 @@ function MainQuototation({ data }) {
                     style={{ height: 100 }}
                   ></textarea>
                 </div>
-
-                {/* <div class="col-md-12">
-                  <label >Description</label>
-                  <select
-                    id="inputState"
-                    className="form-select"
-                    
-                  >
-                    <option value="indays" selected>
-                      Pay in days
-                    </option>
-                    <option value="cod">COD</option>
-                  </select>
-                </div>
-
-                <div class="col-md-2">
-                  <label htmlFor="period">Durée</label>
-                  <input
-                    id="period"
-                    type="text"
-                    className={`form-control period-number ${
-                      paymentOption !== "indays" ? "disabled" : ""
-                    }`}
-                    placeholder="0"
-                    required
-                    disabled={paymentOption !== "indays"}
-                  />
-                </div> */}
               </form>
 
               <div className="card-body" style={{ marginTop: "40px" }}>
@@ -449,8 +421,6 @@ function MainQuototation({ data }) {
                     Cancel
                   </button>
                 </div>
-
-                {/* End Table default rows */}
               </div>
             </div>
           </div>
