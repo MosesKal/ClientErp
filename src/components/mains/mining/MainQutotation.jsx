@@ -151,8 +151,11 @@ function MainQuototation({ data }) {
         });
     } else if (action === "send") {
       const quotationToSend = quotations[quotationIndex];
+      console.log(quotationToSend);
       axios
-        .post(COTATION_URL, JSON.stringify(quotationToSend))
+        .post(COTATION_URL, JSON.stringify(quotationToSend), {
+          headers: { "Content-Type": "application/json" },
+        })
         .then((response) => {
           console.log(response.data);
         })
@@ -317,8 +320,7 @@ function MainQuototation({ data }) {
 
                 <div class="col-6">
                   <label htmlFor="adress">Adresse Entreprise</label>
-                  <inputSafety
-                    shoes
+                  <input
                     type="text"
                     class="form-control"
                     id="adress"
