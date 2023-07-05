@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import Alerts from "./muiComponents/Alert";
@@ -8,13 +8,19 @@ import axios from "../components/api/axios";
 const LOGIN_URL = "/login";
 
 const Login = () => {
-  const { setAuth } = useAuth();
+  const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem("user"));
+
+  //   console.log(user[Object.keys(user)[0]].roles);
+
+  // }, []);
 
   const [email, setMail] = useState("");
   const [pwd, setPwd] = useState("");
   const [alert, setAlert] = useState("");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -33,14 +39,22 @@ const Login = () => {
       const nomUser = response?.data?.data?.nomUser;
       const prenomUser = response?.data?.data?.prenomUser;
 
-      setAuth({ roles, accessToken, profilUser, nomUser, prenomUser });
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ accessToken, roles, profilUser, nomUser, prenomUser })
+      );
+
       setMail("");
       setPwd("");
+      setAuth({ accessToken, roles, profilUser, nomUser, prenomUser });
+
       navigate(`/${roles}`);
     } catch (err) {
       setAlert(err?.response?.data?.message);
     }
   };
+
+  console.log(auth[Object?.keys(auth)[0]]?.profilUser);
 
   return (
     <div className="container-fluid container-login vh-100">

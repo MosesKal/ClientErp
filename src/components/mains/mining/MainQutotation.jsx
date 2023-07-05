@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { UilTimes } from "@iconscout/react-unicons";
 import { FiChevronDown } from "react-icons/fi";
@@ -11,8 +11,6 @@ const COTATION_URL = "/createCotation";
 
 function MainQuototation({ data }) {
   const [status, setStatus] = useState("open");
-
-  console.log(data);
 
   const [rows, setRows] = useState([
     { id: 1, qty: "", description: "", detail: "" },
@@ -79,6 +77,17 @@ function MainQuototation({ data }) {
     document.getElementById("end").value = "";
     setPopupOpen(false);
   };
+
+  useEffect(() => {
+    const storedQuotations = localStorage.getItem("quotations");
+    if (storedQuotations) {
+      setQuotations(JSON.parse(storedQuotations));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("quotations", JSON.stringify(quotations));
+  }, [quotations]);
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -151,8 +160,11 @@ function MainQuototation({ data }) {
         });
     } else if (action === "send") {
       const quotationToSend = quotations[quotationIndex];
+      console.log(quotationToSend);
       axios
-        .post(COTATION_URL, JSON.stringify(quotationToSend))
+        .post(COTATION_URL, JSON.stringify(quotationToSend), {
+          headers: { "Content-Type": "application/json" },
+        })
         .then((response) => {
           console.log(response.data);
         })
@@ -317,8 +329,7 @@ function MainQuototation({ data }) {
 
                 <div class="col-6">
                   <label htmlFor="adress">Adresse Entreprise</label>
-                  <inputSafety
-                    shoes
+                  <input
                     type="text"
                     class="form-control"
                     id="adress"
