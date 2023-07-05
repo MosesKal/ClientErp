@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 /**---------------------------------------------------------------------------------------
  *                    IMPORTATION PAGE ADMIN
  *---------------------------------------------------------------------------------------*/
@@ -30,7 +31,7 @@ import RapportMining from "./components/pages/mining/RapportMining";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Attent from "./components/Attent";
-import { MiningProvider } from "./context/MiningProvider";
+import useAuth from "./hooks/useAuth";
 
 import Layout from "./components/Layout";
 import RequireAuth from "./components/RequireAuth";
@@ -50,14 +51,13 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/attent" element={<Attent />} />
 
-          <Route element={<RequireAuth allowedRoles={[ROLES.MINING]} />}>
-            <Route path="/mining" element={<DashboardMining />} />
-            <Route path="/commandeMining" element={<Commande />} />
-            <Route path="/cotationMining" element={<CotationMining />} />
-            <Route path="/offresMining" element={<OffresMining />} />
-            <Route path="/rapportMining" element={<RapportMining />} />
-          </Route>
-
+        <Route element={<RequireAuth allowedRoles={[ROLES.MINING]} />}>
+          <Route path="/mining" element={<DashboardMining />} />
+          <Route path="/commandeMining" element={<Commande />} />
+          <Route path="/cotationMining" element={<CotationMining />} />
+          <Route path="/offresMining" element={<OffresMining />} />
+          <Route path="/rapportMining" element={<RapportMining />} />
+        </Route>
 
         <Route element={<RequireAuth allowedRoles={[ROLES.ADMIN]} />}>
           <Route path="/admin" element={<DashboardAdmin />} />

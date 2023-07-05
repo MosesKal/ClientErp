@@ -20,6 +20,8 @@ const DashboardMining = () => {
     fetchData();
   }, []);
 
+  console.log(dataMining);
+
   return (
     <div>
       <Header
