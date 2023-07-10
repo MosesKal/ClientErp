@@ -49,6 +49,8 @@ function MainQuototation({ data }) {
 
   const [quotations, setQuotations] = useState([]);
 
+  console.log(data.id);
+
   const handleCreate = (e) => {
     e.preventDefault();
 
@@ -63,7 +65,7 @@ function MainQuototation({ data }) {
     const newQuotation = {
       startDate,
       endDate,
-      userid: data.Entreprise.id,
+      userid: data.id,
       dateDebut: moment(startDate),
       dateFin: moment(endDate),
       duree: moment(endDate).diff(moment(startDate), "days"),
