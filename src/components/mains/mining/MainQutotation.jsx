@@ -81,13 +81,6 @@ function MainQuototation({ data , produits}) {
     setRows(updatedRows);
   };
 
-
-  // const handleInputChange = (e, rowId, fieldName) => {
-  //   const updatedRows = rows.map((row) =>
-  //       row.id === rowId ? { ...row, [fieldName]: e.target.value } : row
-  //   );
-  //   setRows(updatedRows);
-  // };
   const removeRow = (rowId) => {
     const updatedRows = rows.filter((row) => row.id !== rowId);
     setRows(updatedRows);
@@ -145,8 +138,6 @@ function MainQuototation({ data , produits}) {
     localStorage.setItem("quotations", JSON.stringify(quotations));
   }, [quotations]);
 
-  console.log(rows);
-  console.log(produits)
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
