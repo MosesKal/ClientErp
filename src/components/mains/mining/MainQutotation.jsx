@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+
+import Select from "react-select";
+
 import moment from "moment";
 import { UilTimes } from "@iconscout/react-unicons";
 import { FiChevronDown } from "react-icons/fi";
@@ -9,29 +12,82 @@ import "../../../index.css";
 
 const COTATION_URL = "/createCotation";
 
-function MainQuototation({ data }) {
+function MainQuototation({ data , produits}) {
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    const updatedOptions = produits.map((produit) => ({
+      value: produit.nom,
+      label: produit.nom,
+    }));
+
+    setOptions(updatedOptions);
+  }, []);
+
   const [status, setStatus] = useState("open");
 
   const [rows, setRows] = useState([
-    { id: 1, qty: "", description: "", detail: "" },
+    { id: 1, qty: null, detail: "", nameProduct : "" }
   ]);
 
   const addRow = () => {
-    const newRow = { id: Date.now(), qty: "", description: "", detail: "" };
+    const newRow = { id: Date.now(), qty: null, detail: "", nameProduct : "" };
     setRows([...rows, newRow]);
     const addRow = () => {
-      const newRow = { id: Date.now(), qty: "", description: "", detail: "" };
+      const newRow = { id: Date.now(), qty: null, detail: "", nameProduct : "" };
       setRows([...rows, newRow]);
     };
   };
 
-  const handleInputChange = (e, rowId, fieldName) => {
-    const updatedRows = rows.map((row) =>
-      row.id === rowId ? { ...row, [fieldName]: e.target.value } : row
-    );
+  const handleSelectChange = (selectedProduct, rowId, fieldName) => {
+    const updatedRows = rows.map((row) => {
+      if (row.id === rowId) {
+        const selectedProduit = produits.find(
+            (produit) => produit.nom === selectedProduct.value
+        );
+        if (selectedProduit) {
+          return {
+            ...row,
+            [fieldName]: {
+              value: selectedProduct.value,
+              label: selectedProduct.label,
+              id: selectedProduit.id,
+            },
+          };
+        }
+
+      }
+      return row;
+    });
     setRows(updatedRows);
   };
 
+  const handleInputChange = (e, rowId, fieldName) => {
+    const { value } = e.target;
+    const updatedRows = rows.map((row) => {
+      if (row.id === rowId) {
+        const selectedProduit = produits.find(
+            (produit) => produit.nom === row.nameProduct.value
+        );
+        if (selectedProduit) {
+          return {
+            ...row,
+            [fieldName]: value,
+          };
+        }
+      }
+      return row;
+    });
+    setRows(updatedRows);
+  };
+
+
+  // const handleInputChange = (e, rowId, fieldName) => {
+  //   const updatedRows = rows.map((row) =>
+  //       row.id === rowId ? { ...row, [fieldName]: e.target.value } : row
+  //   );
+  //   setRows(updatedRows);
+  // };
   const removeRow = (rowId) => {
     const updatedRows = rows.filter((row) => row.id !== rowId);
     setRows(updatedRows);
@@ -63,7 +119,7 @@ function MainQuototation({ data }) {
     const newQuotation = {
       startDate,
       endDate,
-      userid: data.Entreprise.id,
+      userid: data.id,
       dateDebut: moment(startDate),
       dateFin: moment(endDate),
       duree: moment(endDate).diff(moment(startDate), "days"),
@@ -88,6 +144,9 @@ function MainQuototation({ data }) {
   useEffect(() => {
     localStorage.setItem("quotations", JSON.stringify(quotations));
   }, [quotations]);
+
+  console.log(rows);
+  console.log(produits)
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -190,7 +249,7 @@ function MainQuototation({ data }) {
         </div>
         <div className="card-body">
           <div className="d-flex justify-content-between mx-3 mt-5">
-            <h5 class="card-title">Demande de cotation</h5>
+            <h5 className="card-title">Demande de cotation</h5>
 
             <button
               className="btn btn-primary {isPopupOpen ? overlay}"
@@ -223,9 +282,9 @@ function MainQuototation({ data }) {
                   <td>{quotation.duree}</td>
                   <td>
                     {status === "open" ? (
-                      <span class="badge bg-secondary">Non envoyée</span>
+                      <span className="badge bg-secondary">Non envoyée</span>
                     ) : (
-                      <span class="badge bg-susses">En attente</span>
+                      <span className="badge bg-susses">En attente</span>
                     )}
                   </td>
                   <td>
@@ -280,30 +339,29 @@ function MainQuototation({ data }) {
           <div className="row popup-container2 p-3" style={{ width: "700 px" }}>
             <div className="card-body">
               <div className="d-flex justify-content-between mx-3">
-                <h5 class="card-title">Demande de cotation</h5>
-
+                <h5 className="card-title">Demande de cotation</h5>
                 <button
                   type="button"
-                  class="btn-close card-title btn-close-width"
+                  className="btn-close card-title btn-close-width"
                   style={{ width: "40px" }}
                   aria-label="Close"
                   onClick={handleClosePopup}
                 ></button>
               </div>
 
-              <form class="row g-3 mx-2 needs-validation" noValidate>
-                <div class="col-md-6">
+              <form className="row g-3 mx-2 needs-validation" noValidate>
+                <div className="col-md-6">
                   <label htmlFor="name">Nom de l'entreprise</label>
                   <input
                     type="text"
                     id="name"
-                    class="form-control"
+                    className="form-control"
                     placeholder={`${data.Entreprise.denomination}`}
                     required
                     disabled
                   />
                 </div>
-                <div class="col-md-3">
+                <div className="col-md-3">
                   <label htmlFor="start">Date de début</label>
                   <input
                     type="date"
@@ -314,7 +372,7 @@ function MainQuototation({ data }) {
                     required
                   />
                 </div>
-                <div class="col-md-3">
+                <div className="col-md-3">
                   <label htmlFor="end">Date de fin</label>
 
                   <input
@@ -327,20 +385,20 @@ function MainQuototation({ data }) {
                   />
                 </div>
 
-                <div class="col-6">
+                <div className="col-6">
                   <label htmlFor="adress">Adresse Entreprise</label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="adress"
                     placeholder={`1016, ${data.Entreprise.Adresse.avenue}, ${data.Entreprise.Adresse.ville}, ${data.Entreprise.Adresse.province}`}
                     disabled
                   />
                 </div>
 
-                <div class="col-md-6">
+                <div className="col-md-6">
                   <label htmlFor="inputState">Vendeur</label>
-                  <select id="inputState" class="form-select">
+                  <select id="inputState" className="form-select">
                     <option selected>Tous</option>
                     <option>...</option>
                   </select>
@@ -363,39 +421,38 @@ function MainQuototation({ data }) {
                   <thead>
                     <tr>
                       <th scope="col">Numéro</th>
-                      <th scope="col">Qty</th>
                       <th scope="col">Nom du produit</th>
+                      <th scope="col">Quantité</th>
                       <th scope="col">Detail</th>
                       <th scope="col"></th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody >
                     {rows.map((row, index) => (
-                      <tr key={row.id}>
+                      <tr key={row.id} >
                         <td>{index + 1}</td>
-                        <td>
-                          <input
-                            type="number"
-                            className="form-control input-tab border border-secondary-subtle"
-                            id="qty"
-                            value={row.qty}
-                            onChange={(e) =>
-                              handleInputChange(e, row.id, "qty")
-                            }
+                        <td className="col-4">
+                          <Select
+                              options={options}
+                              id="nameProduct"
+                              value={row.nameProduct}
+                              onChange={(selectedProduct) =>
+                                  handleSelectChange(selectedProduct, row.id, "nameProduct")
+                              }
                           />
                         </td>
-                        <td>
+                        <td className="col-2">
                           <input
-                            type="text"
-                            className="form-control input-tab border border-secondary-subtle"
-                            id="desc"
-                            value={row.description}
-                            onChange={(e) =>
-                              handleInputChange(e, row.id, "description")
-                            }
+                              type="number"
+                              className="form-control input-tab border border-secondary-subtle"
+                              id="qty"
+                              value={row.qty}
+                              onChange={(e) =>
+                                  handleInputChange(e, row.id, "qty")
+                              }
                           />
                         </td>
-                        <td>
+                        <td className="col">
                           <input
                             type="text"
                             className="form-control input-tab border border-secondary-subtle"
@@ -406,7 +463,7 @@ function MainQuototation({ data }) {
                             }
                           />
                         </td>
-                        <td>
+                        <td className="col">
                           <UilTimes onClick={() => removeRow(row.id)} />
                         </td>
                       </tr>
@@ -419,14 +476,14 @@ function MainQuototation({ data }) {
                 <div className="text-end mt-5 mb-3">
                   <button
                     id="inputState"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     onClick={handleCreate}
                   >
                     Créer une DC
                   </button>
                   <button
                     type="button"
-                    class="btn btn-secondary ms-2"
+                    className="btn btn-secondary ms-2"
                     onClick={handleClosePopup}
                   >
                     Cancel

@@ -6,7 +6,7 @@ import MainMining from "../../mains/mining/MainMining";
 import useAuth from "../../../hooks/useAuth";
 
 const DashboardMining = () => {
-  const { auth, dataMining, setDataMining } = useAuth();
+  const { auth, dataMining, setDataMining, setProduits, produits } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,10 +17,17 @@ const DashboardMining = () => {
         console.log("Une erreur s'est produite");
       }
     };
+    const fetchProduits = async ()=>{
+        try {
+            const response = await axios.get("/getProduits");
+            setProduits(response?.data);
+        }catch (e) {
+            console.log("erreur lors de la recuperation du produits");
+        }
+    };
     fetchData();
+    fetchProduits();
   }, []);
-
-  console.log(dataMining);
 
   return (
     <div>
