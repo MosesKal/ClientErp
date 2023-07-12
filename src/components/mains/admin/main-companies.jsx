@@ -183,14 +183,13 @@ export default function MainCompanies() {
   };
   const handleReset = (e) => {
     e.preventDefault();
-    // Add logic for resetting the form
   };
 
   return (
     <div className={isPopupOpen ? "overlay" : ""}>
       <main id="main" className="main" style={{ marginTop: "60px" }}>
         <div className="pagetitle">
-          <h1>Dashboard</h1>
+          <h1>Entreprise</h1>
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">

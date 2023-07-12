@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import MainQuototation from "../../mains/mining/MainQutotation";
 
 const CotationMining = () => {
-  const { auth, dataMining } = useAuth();
+  const { auth, dataMining , produits} = useAuth();
 
   return (
     <div>
@@ -16,7 +16,7 @@ const CotationMining = () => {
       />
       <SideBarMining />
 
-      <MainQuototation data={dataMining} />
+      <MainQuototation data={dataMining} produits={produits} />
     </div>
   );
 };
