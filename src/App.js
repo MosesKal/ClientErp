@@ -17,21 +17,22 @@ import PlanDeProduction from "./components/pages/vendeur/PlandDeProduction";
 import ComptabiliteVendeur from "./components/pages/vendeur/ComptabiliteVendeur";
 import PortefueilVendeur from "./components/pages/vendeur/PortefueilVendeur";
 import Clients from "./components/pages/vendeur/Clients";
+import DetailCotation from "./components/pages/vendeur/DetailCotation";
+
 /**---------------------------------------------------------------------------------------
  *                    IMPORTATION PAGE MINING
  *---------------------------------------------------------------------------------------*/
+
 import DashboardMining from "./components/pages/mining/DashboardMining";
 import Commande from "./components/pages/mining/Commande";
 import CotationMining from "./components/pages/mining/CotationMining";
 import OffresMining from "./components/pages/mining/OffresMining";
 import RapportMining from "./components/pages/mining/RapportMining";
-/**---------------------------------------------------------------------------------------
- *                    IMPORTATION PAGE GENERALE
- *---------------------------------------------------------------------------------------*/
+
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Attent from "./components/Attent";
-import useAuth from "./hooks/useAuth";
+
 
 import Layout from "./components/Layout";
 import RequireAuth from "./components/RequireAuth";
@@ -80,6 +81,7 @@ function App() {
             element={<ComptabiliteVendeur />}
           />
           <Route path="/portefeuilVendeur" element={<PortefueilVendeur />} />
+          <Route path="/detailCotation/:cotationId" element={<DetailCotation/>}/>
         </Route>
       </Route>
     </Routes>

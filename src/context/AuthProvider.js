@@ -7,9 +7,11 @@ export const AuthProvider = ({ children }) => {
   const [dataForm , setDataForm] =useState({});
   const [dataMining, setDataMining] = useState({});
   const [produits, setProduits] = useState([]);
+  const [cotation, setCotation] = useState({});
+  const [cotations, setCotations] = useState([])
 
   return (
-    <AuthContext.Provider value={{ auth, setAuth , dataForm, setDataForm , dataMining, setDataMining, produits, setProduits}}>
+    <AuthContext.Provider value={{ auth, setAuth , dataForm, setDataForm , dataMining, setDataMining, produits, setProduits, cotation, setCotation, cotations, setCotations}}>
       {children}
     </AuthContext.Provider>
   );
