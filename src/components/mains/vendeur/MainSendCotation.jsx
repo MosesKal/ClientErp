@@ -91,7 +91,6 @@ const MainSendCotation = () => {
             </div>
           </div>
         </div>
-
         <section className="section profile">
           <div className="row">
             <div className="col-xl-9">
