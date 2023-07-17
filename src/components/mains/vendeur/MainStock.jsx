@@ -1,6 +1,13 @@
+import {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
-import DataTable from "./TableProduits";
+
 const MainStock = () => {
+  const [produits, setProduits] = useState();
+
+  useEffect(()=>{
+
+  }, []);
+
   return (
     <div>
       <main id="main" className="main">
@@ -15,34 +22,28 @@ const MainStock = () => {
             </ol>
           </nav>
         </div>
-        <div class="col-12">
-          <div class="card recent-sales overflow-auto">
-            <div class="filter">
-              <Link to="#" class="icon" data-bs-toggle="dropdown">
-                <i class="bi bi-three-dots"></i>
-              </Link>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-                <li>
-                  <Link to="/categorie" className="dropdown-item">
-                    Catégorie
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/entree" className="dropdown-item">
-                    Entrées
-                  </Link>
-                </li>
-              </ul>
-            </div>
+        <div className="col-12 comand ">
+          <div className="card recent-sales overflow-auto">
 
-            <div class="card-body mt-3">
-              <h5 class="card-title">
-                Tous les Produits <span>| stock</span>
+            <div className="card-body mt-3 ">
+              <h5 className="card-title">
+                Catalogue Produits
               </h5>
-              <DataTable />
+
+              <table className="table table-borderless datatable cotation table-hover">
+                <thead>
+                <tr>
+                  <th scope="col">Produit</th>
+                  <th scope="col">Date entrée</th>
+                  <th scope="col">Quantité</th>
+                  <th scope="col">Prix</th>
+                  <th scope="col">Statut</th>
+                  <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

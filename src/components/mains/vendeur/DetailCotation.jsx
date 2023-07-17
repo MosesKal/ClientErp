@@ -1,4 +1,3 @@
-import React from "react";
 import useAuth from "../../../hooks/useAuth";
 import Avatar from "@mui/material/Avatar";
 import Chip from "@mui/material/Chip";
@@ -20,7 +19,6 @@ const DetailCotation = () => {
   if(!cotation){
     return <div>Cotation introuvable</div>
   }
-
 
   return (
     <div>
@@ -64,7 +62,7 @@ const DetailCotation = () => {
                         className="rounded-circle"
                       />
                     </td>
-                    <td>{cotation.description}</td>
+                    <td>{cotation.description.length > 10 ? cotation.description.substr(0, 40) + '...' : cotation.description}</td>
                     <td>{cotation.date_debut}</td>
                     <td>{cotation.date_fin}</td>
                     <td>{cotation.entreprise}</td>
@@ -74,11 +72,13 @@ const DetailCotation = () => {
                       </span>
                     </td>
                     <td>
+                      <Link to={`/sendOffre/${cotation.id}`}>
                       <IconButton>
                         <SendIcon />
                       </IconButton>
+                      </Link>
 
-                      <Link to="/detailCotation">
+                      <Link>
                         <IconButton>
                           <ReadMoreIcon />
                         </IconButton>

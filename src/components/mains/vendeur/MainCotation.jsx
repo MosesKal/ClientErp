@@ -49,15 +49,17 @@ const MainCotation = () => {
                         <td>
                           <Avatar src={`${cotation.logoEntreprise}`} alt="logo" className="rounded-circle"/>
                         </td>
-                        <td>{cotation.description}</td>
+                        <td>{cotation.description.length > 10 ? cotation.description.substr(0, 40) + '...' : cotation.description}</td>
                         <td>{cotation.date_debut}</td>
                         <td>{cotation.date_fin}</td>
                         <td>{cotation.entreprise}</td>
                         <td><span className="badge rounded-pill text-bg-secondary">En attente</span></td>
                         <td>
-                          <IconButton >
-                            <SendIcon />
-                          </IconButton>
+                          <Link to={`/sendOffre/${cotation.id}`}>
+                            <IconButton>
+                              <SendIcon />
+                            </IconButton>
+                          </Link>
 
                           <Link to={`/detailCotation/${cotation.id}`} >
                             <IconButton >

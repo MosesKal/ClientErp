@@ -38,6 +38,8 @@ const Login = () => {
       const profilUser = response?.data?.data?.profileUser;
       const nomUser = response?.data?.data?.nomUser;
       const prenomUser = response?.data?.data?.prenomUser;
+      const mail = response?.data?.data?.mail;
+      const telephone = response?.data?.data?.telephone;
 
       localStorage.setItem(
         "user",
@@ -46,7 +48,7 @@ const Login = () => {
 
       setMail("");
       setPwd("");
-      setAuth({ accessToken, roles, profilUser, nomUser, prenomUser });
+      setAuth({ accessToken, roles, profilUser, nomUser, prenomUser, mail, telephone });
 
       navigate(`/${roles}`);
     } catch (err) {
