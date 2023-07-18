@@ -11,9 +11,6 @@ const DetailCotation = () => {
   const {cotationId} = useParams();
   const { cotations } = useAuth();
 
-  console.log(cotationId);
-  console.log(cotations)
-
   const cotation = cotations.find((cotation)=>cotation.id == cotationId);
 
   if(!cotation){
@@ -62,7 +59,7 @@ const DetailCotation = () => {
                         className="rounded-circle"
                       />
                     </td>
-                    <td>{cotation.description.length > 10 ? cotation.description.substr(0, 40) + '...' : cotation.description}</td>
+                    <td><Chip label={cotation.description.length > 10 ? cotation.description.substr(0, 40) + '...' : cotation.description}/></td>
                     <td>{cotation.date_debut}</td>
                     <td>{cotation.date_fin}</td>
                     <td>{cotation.entreprise}</td>
@@ -90,7 +87,6 @@ const DetailCotation = () => {
             </div>
           </div>
         </div>
-
         <section className="section profile">
           <div className="row">
             <div className="col-xl-2">
@@ -146,7 +142,7 @@ const DetailCotation = () => {
                         Description de l'entreprise
                       </h5>
                       <p className="small fst-italic">
-                        {cotation.descriptionEntreprise}
+                        <Chip label={cotation.descriptionEntreprise}/>
                       </p>
                       <h5 className="card-title">
                         Informations Detailées sur l'entreprise
@@ -238,8 +234,8 @@ const DetailCotation = () => {
                                           <Avatar
                                             alt={produit.nom_categorie}
                                             sx={{
-                                              width: 100,
-                                              height: 100,
+                                              width: 70,
+                                              height: 70,
                                             }}
                                             src={`${produit.illustration_categorie}`}
                                           />
@@ -259,7 +255,7 @@ const DetailCotation = () => {
                                           <Avatar
                                             alt={produit.nom}
                                             src={produit.photo}
-                                            sx={{ width: 100, height: 100 }}
+                                            sx={{ width: 70, height: 70 }}
                                           />
                                         </Link>
                                       </td>
