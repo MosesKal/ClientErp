@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const MainStock = () => {
   const [produits, setProduits] = useState();
 
-  useEffect(()=>{
-
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div>
@@ -21,40 +20,38 @@ const MainStock = () => {
             </ol>
           </nav>
         </div>
-        <div className="col-12 comand ">
-          <div className="row my-4 justify-content-end">
-            <div className="col-2 d-grid gap-2">
-              <button type="button" className="btn btn-primary">
-                <span className="bi bi-plus"></span> Nouveau Stock
-              </button>
-            </div>
 
-            <div className="col-2 d-grid gap-2">
-              <button type="button" className="btn btn-secondary">
-                <span className="bi bi-trash"></span> Ouvrir Stock
+        <div className="card-body" style={{ padding: "140px" }}>
+          <div className=" col-12 d-flex align-items-center justify-content-center mb-4">
+            <div className="card info-card mb-2" style={{ width: "500px" }}>
+              <div className="d-flex align-items-center justify-content-center text-center">
+                <img
+                  src={process.env.PUBLIC_URL + "/appointment.gif"}
+                  alt="Shopping Cart"
+                  style={{ width: "200px" }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="col-12 comand d-flex flex-column align-items-center justify-content-center mb-4">
+            <h3>Le stock est vide</h3>
+            <span className="text-secondary">Créer et gérer votre stock</span>
+          </div>
+          <div className="col-12 comand d-flex align-items-center justify-content-center">
+            <div>
+              <button
+                type="button"
+                className="btn btn-primary"
+                style={{ width: "300px" }}
+              >
+                <span className="bi bi-plus"></span> CREER UN NOUVEAU STOCK
               </button>
             </div>
           </div>
-
-          <div className="card recent-sales overflow-auto">
-            <div className="card-body mt-3 ">
-              <h5 className="card-title">Catalogue Produit</h5>
-              <table className="table table-borderless datatable cotation table-hover">
-                <thead>
-                <tr>
-                  <th scope="col">Produit</th>
-                  <th scope="col">Catégorie</th>
-                  <th scope="col">Date entrée</th>
-                  <th scope="col">Quantité</th>
-                  <th scope="col">Prix</th>
-                  <th scope="col">Statut</th>
-                  <th scope="col">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-            </div>
+          <div className="col-12 comand d-flex align-items-center justify-content-center mt-3">
+            <p className="text-primary ">
+              <Link>Importer le stock</Link>
+            </p>
           </div>
         </div>
       </main>
