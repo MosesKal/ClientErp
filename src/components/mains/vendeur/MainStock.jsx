@@ -14,9 +14,11 @@ const MainStock = () => {
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="index.html">Home</a>
+                <Link to="/CotationVendeur">Home</Link>
               </li>
-              <li className="breadcrumb-item active">Stock</li>
+              <li className="breadcrumb-item active">
+                <Link to="/detailCotation">Stock</Link>
+              </li>
             </ol>
           </nav>
         </div>
@@ -38,14 +40,25 @@ const MainStock = () => {
             <span className="text-secondary">Créer et gérer votre stock</span>
           </div>
           <div className="col-12 comand d-flex align-items-center justify-content-center">
-            <div>
-              <button
-                type="button"
-                className="btn btn-primary"
-                style={{ width: "300px" }}
-              >
-                <span className="bi bi-plus"></span> CREER UN NOUVEAU STOCK
-              </button>
+            <div className="row">
+              <div className="col-6">
+                <button
+                    type="button"
+                    className="btn btn-primary"
+                    style={{width : 250}}
+                >
+                  <i className="bi bi-plus pe-2"></i>NOUVEAU STOCK
+                </button>
+              </div>
+              <div className="col-6">
+                <button
+                    type="button"
+                    className="btn btn-secondary"
+                    style={{width : 250}}
+                >
+                  <i className="bi bi-grid pe-2"></i>PRODUITS
+                </button>
+              </div>
             </div>
           </div>
           <div className="col-12 comand d-flex align-items-center justify-content-center mt-3">
