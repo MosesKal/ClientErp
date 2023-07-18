@@ -19,7 +19,7 @@ const DashboardVendeur = () => {
       };
       const fetchAllCotations = async ()=>{
           try{
-              const response = await axios.get('/getAllCatations');
+              const response = await axios.get('/getAllCotations');
               setCotations(response?.data);
           }catch (e) {
               console.log("Une erreur s'est produite", e);
