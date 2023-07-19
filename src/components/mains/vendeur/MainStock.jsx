@@ -42,22 +42,22 @@ const MainStock = () => {
           <div className="col-12 comand d-flex align-items-center justify-content-center">
             <div className="row">
               <div className="col-6">
-                <button
-                    type="button"
+                <Link
+                    to=""
                     className="btn btn-primary"
                     style={{width : 250}}
                 >
                   <i className="bi bi-plus pe-2"></i>NOUVEAU STOCK
-                </button>
+                </Link>
               </div>
               <div className="col-6">
-                <button
-                    type="button"
+                <Link
+                    to="/CatalogueProduit"
                     className="btn btn-secondary"
                     style={{width : 250}}
                 >
                   <i className="bi bi-grid pe-2"></i>PRODUITS
-                </button>
+                </Link>
               </div>
             </div>
           </div>
