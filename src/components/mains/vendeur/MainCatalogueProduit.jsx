@@ -54,9 +54,11 @@ const MainCatalogueProduit = () => {
     }));
     setOptions(updatedOptions);
   }, [categories]);
+
   const handleButtonClick = () => {
     setPopupOpen(true);
   };
+  
   const handleClosePopup = () => {
     setPopupOpen(false);
   };

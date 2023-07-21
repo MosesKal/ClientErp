@@ -359,7 +359,9 @@ const MainSendCotation = () => {
             <div className="col-xl-3">
               <div className="card">
                 <div className="card-header">
-                  <h5 className="text-center">Envoi de l'offre de service à l'entreprise</h5>
+                  <h5 className="text-center">
+                    Envoi de l'offre de service à l'entreprise
+                  </h5>
                 </div>
                 <div className="card-body profile-card pt-4 d-flex flex-column align-items-center">
                   <img

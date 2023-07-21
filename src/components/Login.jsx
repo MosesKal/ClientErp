@@ -40,15 +40,16 @@ const Login = () => {
       const prenomUser = response?.data?.data?.prenomUser;
       const mail = response?.data?.data?.mail;
       const telephone = response?.data?.data?.telephone;
+      const id = response?.data?.data?.id;
 
       localStorage.setItem(
         "user",
-        JSON.stringify({ accessToken, roles, profilUser, nomUser, prenomUser })
+        JSON.stringify({ accessToken, roles, profilUser, nomUser, prenomUser, id})
       );
 
       setMail("");
       setPwd("");
-      setAuth({ accessToken, roles, profilUser, nomUser, prenomUser, mail, telephone });
+      setAuth({ accessToken, roles, profilUser, nomUser, prenomUser, mail, telephone, id });
 
       navigate(`/${roles}`);
     } catch (err) {
