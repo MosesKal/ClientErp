@@ -13,6 +13,7 @@ const ParticulierForm = () => {
     const file = e.target.files[0];
     setValues({ ...values, Profil: file });
   };
+
   setDataForm(values);
 
   return (

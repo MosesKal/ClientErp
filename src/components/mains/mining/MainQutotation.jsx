@@ -20,7 +20,6 @@ function MainQuototation({ data , produits}) {
       value: produit.nom,
       label: produit.nom,
     }));
-
     setOptions(updatedOptions);
   }, []);
 
@@ -99,6 +98,7 @@ function MainQuototation({ data , produits}) {
   const [quotations, setQuotations] = useState([]);
 
   const handleCreate = (e) => {
+
     e.preventDefault();
 
     const startDate = document.getElementById("start").value;
@@ -241,7 +241,6 @@ function MainQuototation({ data , produits}) {
         <div className="card-body">
           <div className="d-flex justify-content-between mx-3 mt-5">
             <h5 className="card-title">Demande de cotation</h5>
-
             <button
               className="btn btn-primary {isPopupOpen ? overlay}"
               onClick={handleButtonClick}
@@ -386,7 +385,6 @@ function MainQuototation({ data , produits}) {
                     disabled
                   />
                 </div>
-
                 <div className="col-md-6">
                   <label htmlFor="inputState">Vendeur</label>
                   <select id="inputState" className="form-select">

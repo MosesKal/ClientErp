@@ -19,6 +19,8 @@ import PortefueilVendeur from "./components/pages/vendeur/PortefueilVendeur";
 import Clients from "./components/pages/vendeur/Clients";
 import DetailCotation from "./components/pages/vendeur/DetailCotation";
 import SendCotation from "./components/pages/vendeur/SendCotation";
+import CatalogueProduit from "./components/pages/vendeur/CatalogueProduit";
+
 
 /**---------------------------------------------------------------------------------------
  *                    IMPORTATION PAGE MINING
@@ -84,6 +86,7 @@ function App() {
           <Route path="/portefeuilVendeur" element={<PortefueilVendeur />} />
           <Route path="/detailCotation/:cotationId" element={<DetailCotation/>}/>
           <Route path="/sendOffre/:cotationId" element={<SendCotation/>}/>
+          <Route path="/CatalogueProduit" element={<CatalogueProduit/>}/>
         </Route>
       </Route>
     </Routes>
