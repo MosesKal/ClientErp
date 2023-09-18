@@ -1,40 +1,68 @@
-import React from "react";
+import { NavLink } from "react-router-dom";
 
 const SideBarMining = () => {
   return (
     <aside id="sidebar" className="sidebar">
       <ul className="sidebar-nav" id="sidebar-nav">
         <li className="nav-item">
-          <a className="nav-link" href="index.html">
-            <i class="bi bi-grid-1x2-fill"></i>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "nav-link" : "nav-link collapsed"
+            }
+            activeClassName="active"
+            to="/mining"
+          >
+            <i className="bi bi-grid-1x2-fill"></i>
             <span>Dashboard Mining</span>
-          </a>
+          </NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="users-profile.html">
-            <i class="bi bi-megaphone-fill"></i>
-            <span>Cotation</span>
-          </a>
+        <li className="nav-item">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "nav-link" : "nav-link collapsed"
+            }
+            activeClassName="active"
+            to="/cotationMining"
+          >
+            <i className="bi bi-megaphone-fill"></i>
+            <span>Cotations</span>
+          </NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="users-profile.html">
-            <i class="bi bi-briefcase-fill"></i>
+        <li className="nav-item">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "nav-link" : "nav-link collapsed"
+            }
+            activeClassName="active"
+            to="/offresMining"
+          >
+            <i className="bi bi-briefcase-fill"></i>
             <span>Offres</span>
-          </a>
+          </NavLink>
         </li>
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="users-profile.html">
-            <i class="bi bi-archive-fill"></i>
+        <li className="nav-item">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "nav-link" : "nav-link collapsed"
+            }
+            activeClassName="active"
+            to="/commandeMining"
+          >
+            <i className="bi bi-archive-fill"></i>
             <span>Commandes</span>
-          </a>
+          </NavLink>
         </li>
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="users-profile.html">
-            <i class="bi bi-bar-chart-line-fill"></i>
-            <span>Rapport</span>
-          </a>
+        <li className="nav-item">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "nav-link" : "nav-link collapsed"
+            }
+            activeClassName="active"
+            to="/rapportMining"
+          >
+            <i className="bi bi-bar-chart-line-fill"></i>
+            <span>Rapports</span>
+          </NavLink>
         </li>
       </ul>
     </aside>

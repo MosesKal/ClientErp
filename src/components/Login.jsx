@@ -1,164 +1,118 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
-import imgIllustration from "../components/assets/img/Illustration.png";
+import Alerts from "./muiComponents/Alert";
+import PartieIllustration from "./PartieIllustration";
 
 import axios from "../components/api/axios";
 const LOGIN_URL = "/login";
+
 const Login = () => {
-  // const { setAuth } = useAuth();
-  // const navigate = useNavigate();
-
-  // const userRef = useRef();
-  // const errRef = useRef();
-
-  // const [user, setUser] = useState("");
-  // const [pwd, setPwd] = useState("");
-  // const [errMsg, setErrMsg] = useState("");
+  const { auth, setAuth } = useAuth();
+  const navigate = useNavigate();
 
   // useEffect(() => {
-  //   userRef.current.focus();
+  //   const user = JSON.parse(localStorage.getItem("user"));
+
+  //   console.log(user[Object.keys(user)[0]].roles);
+
   // }, []);
 
-  // useEffect(() => {
-  //   setErrMsg("");
-  // }, [user, pwd]);
-
+  const [email, setMail] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [alert, setAlert] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const password = pwd;
+      const response = await axios.post(
+        LOGIN_URL,
+        JSON.stringify({ email, password }),
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-    // try {
-    //   const email = user;
-    //   const password = pwd;
-    //   const response = await axios.post(
-    //     LOGIN_URL,
-    //     JSON.stringify({ email, password }),
-    //     {
-    //       headers: { "Content-Type": "application/json" },
-    //     }
-    //   );
+      const accessToken = response?.data?.data?.accessToken;
+      const roles = response?.data?.data?.roles;
+      const profilUser = response?.data?.data?.profileUser;
+      const nomUser = response?.data?.data?.nomUser;
+      const prenomUser = response?.data?.data?.prenomUser;
+      const mail = response?.data?.data?.mail;
+      const telephone = response?.data?.data?.telephone;
 
-    //   console.log(response.data.data);
-    //   const accessToken = response?.data?.data?.accessToken;
-    //   const roles = response?.data?.data?.roles;
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ accessToken, roles, profilUser, nomUser, prenomUser })
+      );
 
-    //   setAuth({ roles, accessToken });
-    //   setUser("");
-    //   setPwd("");
+      setMail("");
+      setPwd("");
+      setAuth({ accessToken, roles, profilUser, nomUser, prenomUser, mail, telephone });
 
-    //   navigate(`/${roles}`);
-    // } catch (err) {
-    //   if (!err?.response) {
-    //     // setErrMsg(
-    //     //   <>
-    //     //     <FontAwesomeIcon
-    //     //       icon={faExclamationCircle}
-    //     //       className="warning-icon"
-    //     //     />{" "}
-    //     //     No Server Response
-    //     //   </>
-
-    //   } else if (err.response?.status === 400) {
-    //     setErrMsg(
-    //       // <>
-    //       //   <FontAwesomeIcon
-    //       //     icon={faExclamationCircle}
-    //       //     className="warning-icon"
-    //       //   />{" "}
-    //       //   Missing Username or Password
-    //       // </>
-    //     );
-    //   } else if (err.response?.status === 401) {
-    //     setErrMsg(
-    //       <>
-    //         {/* <FontAwesomeIcon
-    //           icon={faExclamationCircle}
-    //           className="warning-icon"
-    //         />{" "}
-    //         Unauthorized */}
-    //       </>
-    //     );
-    //   } else if (err.response?.status === 403) {
-    //     setErrMsg(
-    //       // <>
-    //       //   <FontAwesomeIcon
-    //       //     icon={faExclamationCircle}
-    //       //     className="warning-icon"
-    //       //   />{" "}
-    //       //   {err.response.data.message}
-    //       // </>
-    //     );
-    //   } else {
-    //     setErrMsg(
-    //       // <>
-    //       //   <FontAwesomeIcon
-    //       //     icon={faExclamationCircle}
-    //       //     className="warning-icon"
-    //       //   />{" "}
-    //       //   Login Failed
-    //       // </>
-    //     );
-    //   }
-    //   console.log(err);
-    //   errRef.current.focus();
-    // }
+      navigate(`/${roles}`);
+    } catch (err) {
+      setAlert(err?.response?.data?.message);
+    }
   };
+
+  console.log(auth[Object?.keys(auth)[0]]?.profilUser);
 
   return (
     <div className="container-fluid container-login vh-100">
       <div className="row h-100 ">
-        <div className="col-lg-5 col-sm-12">
-          <div className="row h-40">
-            <h1>logo</h1>
-          </div>
-          <div className="row h-50 mt-5">
-            <img src={imgIllustration} alt="" className="mt-5" />
-          </div>
-        </div>
-        <div className="col-lg-7 col-sm-12 mt-5">
-          <div className="row align-item-center justify-content-center h-100 mt-5" >
+        <PartieIllustration />
+        <div className="col-lg-6 col-sm-12 mt-5">
+          <div className="row align-item-center justify-content-center h-100 mt-5">
             <div className="col-6 mt-5">
-              <h1 className="mt-5 mb-5">Connexion</h1>
+              {alert && <Alerts message={alert} />}
+              <h1 className="mt-5 mb-3">Connexion</h1>
               <form onSubmit={handleSubmit} className="row">
-                <div className="">
-                  <div className="">
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">
-                        Email address
-                      </label>
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                      />
-                      <div id="emailHelp" class="form-text">
-                        We'll never share your email with anyone else.
-                      </div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">
-                        Password
-                      </label>
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="exampleInputPassword1"
-                      />
-                    </div>
-                    <div class="mb-3 form-check">
-                      <input
-                        type="checkbox"
-                        class="form-check-input"
-                        id="exampleCheck1"
-                      />
-                      <label class="form-check-label" for="exampleCheck1">
-                        Check me out
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                      Submit
+                <div className="row ">
+                  <div className="col mt-3">
+                    <label className="form-label" htmlFor="email">
+                      Adresse Mail
+                    </label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="email"
+                      value={email}
+                      onChange={(e) => setMail(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="row ">
+                  <div className="col mt-3">
+                    <label className="form-label" htmlFor="password">
+                      Mot de passe
+                    </label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="password"
+                      onChange={(e) => setPwd(e.target.value)}
+                      value={pwd}
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="row mt-4">
+                  <div className="d-grid gap-2">
+                    <button className="btn btn-primary" type="submit">
+                      Se connecter
                     </button>
+                  </div>
+                </div>
+                <div className="row mt-4">
+                  <div className="col-8">Créer un compte ?</div>
+                  <div className="col-4 text-align-">
+                    <p>
+                      <Link to="/register" className="link-opacity-100">
+                        Créer
+                      </Link>
+                    </p>
                   </div>
                 </div>
               </form>
